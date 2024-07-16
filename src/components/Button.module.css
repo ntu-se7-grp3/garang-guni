@@ -1,9 +1,17 @@
 .button {
   background-color: transparent;
-  border:0;
+  border: 0;
 }
 
 .button:hover {
   color:blue;
-  border:0;
+  border: 0;
+}
+
+.button:active {
+  color: red;
+}
+
+.button:focus {
+  outline: none;
 }
