@@ -8,16 +8,16 @@ import styles from "./Header.module.css";
 import companyLogo from "../assets/logo.png";
 
 function Header() {
-  const [sideBarOpen, setSideBarOpen] = useState(false);
-  const [userPanelOpen, setUserPanelOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [isUserPanelOpen, setIsUserPanelOpen] = useState(false);
   const { user } = useContext(AuthContext);
 
   const handleMouseEnter = () => {
-    setSideBarOpen(true);
+    setIsSideBarOpen(true);
   };
 
   const handleMouseLeave = () => {
-    setSideBarOpen(false);
+    setIsSideBarOpen(false);
   };
 
   return (
@@ -26,7 +26,7 @@ function Header() {
         <div className={styles.header_top}>
           <img src={companyLogo} alt="garang-guni logo" className={styles.page_logo} />
           <h1 className={styles.header_title}>GARANG GUNI - Earn Money While Recycling</h1>
-          <div onClick={() => setUserPanelOpen(!userPanelOpen)}>
+          <div onClick={() => setIsUserPanelOpen((prevState) => !prevState)}>
             <img src="../assets/usericon.png" alt="user icon" className={styles.user_icon} />
           </div>
         </div>
@@ -35,7 +35,7 @@ function Header() {
             src="../assets/sidebar.png"
             alt="side bar icon"
             className={styles.sideBar_icon}
-            onClick={() => setSideBarOpen(!sideBarOpen)}
+            onClick={() => setIsSideBarOpen((prevState) => !prevState)}
           />
           <div className={styles.username}>
             {user ?
@@ -46,8 +46,8 @@ function Header() {
         </div>
       </div>
       <div className={styles.sideBarHoverArea} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
-      <SideBar isOpen={sideBarOpen} />
-      <UserPanel isOpen={userPanelOpen} />
+      <SideBar isOpen={isSideBarOpen} />
+      <UserPanel isOpen={isUserPanelOpen} />
     </>
   );  
 }
