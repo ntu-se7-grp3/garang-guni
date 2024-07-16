@@ -1,0 +1,10 @@
+.footer {
+  display: flex;
+  position: relative;
+  bottom: 0;
+  min-height: 50px;
+  width: 100vw;
+  align-items: center;
+  background-color: rgba(218, 232, 252, 1);
+  border: teal solid 1px;
+}
