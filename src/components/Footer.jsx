@@ -1,6 +1,6 @@
 import Button from "./Button";
 import styles from "./Footer.module.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 const content = [
@@ -12,10 +12,10 @@ const content = [
 ]
 
 function Footer() {
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  const handleClick = (item) => {
-    // navigate(item.link);
+  const handleClick = (link) => {
+    navigate(link);
   };
 
   return (
