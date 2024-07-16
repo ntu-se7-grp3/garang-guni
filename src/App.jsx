@@ -26,9 +26,9 @@ function App() {
             <Route path='follow' element={<Follow />} />
             <Route path='jobs' element={<Jobs />} />
             <Route path='list' element={<List />} />
-            <Route path='list' element={<Login />} />
-            <Route path='list' element={<Register />} />
-            <Route path='list' element={<Schedule />} />
+            <Route path='login' element={<Login />} />
+            <Route path='register' element={<Register />} />
+            <Route path='schedule' element={<Schedule />} />
             <Route path='terms-and-condition' element={<TermsAndCondition />} />
           </Route>
         </Routes>
