@@ -1,0 +1,38 @@
+.userPanel {
+    position: fixed;
+    top: 0; /* Ensure the panel starts from the top */
+    right: 20%;
+    height: 50%; /* Full height to cover the viewport */
+    width: 20%;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateY(-100%); /* Initially positioned outside the viewport */
+    transition: transform 0.5s ease-in-out; /* Smooth transition */
+    z-index: 1000;
+}
+  
+.userPanelOpen {
+    transform: translateY(100%); /* Slide down into the viewport when open */
+}
+  
+.panelContent {
+    padding: 10px;
+    margin: 10px 0;
+    cursor: pointer;
+    font-size: 20px;
+    text-align: left;
+}
+
+.panelContent ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.panelContent ul li {
+    margin: 25px 0;
+}
+
+.panelContent ul li button:hover,
+.panelContent ul li a:hover{
+    color: darkblue;
+}
