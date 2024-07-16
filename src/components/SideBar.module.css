@@ -1,42 +1,45 @@
-.sideBar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px;
-    background-color: white;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    transform: translateX(-100%); /* Initially hidden */
-    transition: transform 0.3s ease-in-out; /* Smooth transition */
-    z-index: 1000;
-  }
-  
-  .sideBarOpen {
-    transform: translateX(0); /* Slide in when open */
-  }
-  
+.sideBar {  
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  height: 100vh;
+  top: 100px;
+  width: fit-content;
+  padding: 0px 20px 0px;
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  transform: translateX(-100%); /* Initially hidden */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+  z-index: 1000;
+  overflow: auto;
+}
+
+.sideBarOpen {
+  transform: translateX(0); /* Slide in when open */
+}
+
 .barContent {
-    text-align: right;
-    padding: 10px;
-    margin: 10px 0;
-    cursor: pointer;
-    font-size: 20px;
+  text-align: right;
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 .barContent ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .barContent ul li {
-    margin: 25px 0;
+  margin: 25px 0;
 }
 
 .sideBarHoverArea {
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: 50px;
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 50px;
+  z-index: 999;
 }
