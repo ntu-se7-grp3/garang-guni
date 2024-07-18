@@ -1,8 +1,11 @@
 import { useState } from "react";
+
 import contactUsBanner from "../assets/contactUsBanner.png";
 import darkContactUsBanner from "../assets/darkContactUsBanner.png";
 import ContactInfoBox from "../components/ContactInfoBox";
 import styles from "./Contact.module.css"
+import ModalDialog from "../components/ModalDialog";
+
 
 const CONTACT_DETAILS = ["📞 Phone: 87414896", "📧 Email: test@test.com"];
 const OPERATING_HOURS = ["Mon-Fri (9am-6pm)", "Saturday (9am-12pm)"];
@@ -43,6 +46,7 @@ function Contact() {
           <button className={styles.inquryButton}
                   onClick={toggleInquiryForm}
           >Contact us</button>
+          <ModalDialog isOpen={isShowingForm} />
         </div>
       </div>
     </div>
