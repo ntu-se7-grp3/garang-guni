@@ -1,14 +1,17 @@
-.sideBar {
+.sideBar {  
+    display: flex;
+    flex-direction: column;
     position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 250px;
+    height: fit-content;
+    top: 200px;
+    width: fit-content;
+    padding: 0px 20px 0px;
     background-color: white;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     transform: translateX(-100%); /* Initially hidden */
     transition: transform 0.3s ease-in-out; /* Smooth transition */
     z-index: 1000;
+    overflow: auto;
   }
   
   .sideBarOpen {
@@ -16,27 +19,39 @@
   }
   
 .barContent {
-    text-align: right;
+    text-align: center;
     padding: 10px;
-    margin: 10px 0;
+    margin: 30px 0;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
-.barContent ul {
-    list-style-type: none;
-    padding: 0;
+p{
+  margin: 0;
+}
+.sideBar_icon {
+  width:40px;
+  margin-bottom:0px;
 }
 
-.barContent ul li {
-    margin: 25px 0;
+hr {
+  width: 100%;
+  height: 1px;
+  margin: 30px 0;
+  background: grey;
+}
+
+.barContent :hover {
+  color: blueviolet;
 }
 
 .sideBarHoverArea {
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     height: 100%;
     width: 50px;
     z-index: 999;
-}
+  }
