@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container h1 {
+  align-self: center;
+}
+
+.contactUsBanner {
+  display: flex;
+  background-image: linear-gradient(to right,rgba(40,201,149,1),rgba(37,174,214,1));
+  width: 100%;
+  height: 40vh;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+  align-items: center;
+}
+
+.dark .contactUsBanner {
+  background-image: linear-gradient(rgba(12,17,75,1),rgba(31,45,197,1));
+}
+
+.contactUsContent {
+  background-repeat: no-repeat;
+  height: 40vh;
+  margin: auto;
+}
+
+.dark {
+  color:black;
+}
