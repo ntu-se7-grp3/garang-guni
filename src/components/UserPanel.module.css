@@ -1,5 +1,5 @@
 .userPanel {
-    display: flex;
+    display: none;
     position: fixed;
     top: 200px;
     right: 0px;
