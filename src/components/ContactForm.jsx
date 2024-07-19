@@ -35,6 +35,8 @@ const cFrmErrorMessage =  {
 };
 
 const MISSING_REQUIRED_FIELD_FROM_FIELD = "Missing one of the required field";
+const SUCCESS_MESSAGE = "Thanks for your enquiry form, we will try to response" +
+                        "to you within 3 days based on the number/email provided."
 
 const getTextInBrackets = (str) => {
   const re = /\[(.*?)\]$/
@@ -71,6 +73,7 @@ const printErrorMessage = (errors) => {
 function ContactForm({ handleClose = () => {} }) {
   const [form, setForm] = useState(initFormState);
   const [errors, setErrors] = useState({});
+  const [isSuccessful, setIsSuccessful] = useState(false);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -118,6 +121,8 @@ function ContactForm({ handleClose = () => {} }) {
 
     if (!error) {
       // Call the api after the api is created.
+      setForm(initFormState);
+      setIsSuccessful(true);
       alert("Success");
     } else {
       const errorData = error.details.reduce((acc, curItem) => {
@@ -210,6 +215,11 @@ function ContactForm({ handleClose = () => {} }) {
       { Object.keys(errors).length !== 0 && (
         <Alert className={styles.alertBox} sx={{ mb: 4 }} severity="error">
           {printErrorMessage(errors)}
+        </Alert>
+      )}
+      { isSuccessful && (
+        <Alert className={styles.alertBox} sx={{ mb: 4 }} severity="success">
+          {SUCCESS_MESSAGE}
         </Alert>
       )}
     </form>
