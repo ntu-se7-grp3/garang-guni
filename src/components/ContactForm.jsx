@@ -36,8 +36,8 @@ const cFrmErrorMessage =  {
 };
 
 const MISSING_REQUIRED_FIELD_FROM_FIELD = "Missing one of the required field";
-const SUCCESS_MESSAGE = "Thanks for your enquiry form, we will try to response" +
-                        "to you within 3 days based on the number/email provided."
+const SUCCESS_MESSAGE = "Thank you for your enquiry, we will try to respond" +
+                        "to you within 3 days based on the email/phone provided."
 
 const getAllTextInBrackets = (str) => {
   const re = /\[(.*?)\]/g
@@ -129,7 +129,6 @@ function ContactForm({ handleClose = () => {} }) {
 
     if (!error) {
       // Call the api after the api is created.
-      setForm(initFormState);
       setIsSuccessful(true);
       alert("Success");
     } else {
@@ -163,6 +162,7 @@ function ContactForm({ handleClose = () => {} }) {
           variant="filled"
           value={form.firstName}
           onChange={handleOnChange}
+          disabled={isSuccessful}
         />
         <TextField
           name="lastName"
@@ -172,6 +172,7 @@ function ContactForm({ handleClose = () => {} }) {
           variant="filled"
           value={form.lastName}
           onChange={handleOnChange}
+          disabled={isSuccessful}
         />
       </div>
       <TextField
@@ -182,6 +183,7 @@ function ContactForm({ handleClose = () => {} }) {
         variant="filled"
         value={form.phone}
         onChange={handleOnChange}
+        disabled={isSuccessful}
       />
       <TextField
         name="email"
@@ -191,6 +193,7 @@ function ContactForm({ handleClose = () => {} }) {
         variant="filled"
         value={form.email}
         onChange={handleOnChange}
+        disabled={isSuccessful}
       />
       <TextField
         name="subject"
@@ -199,6 +202,7 @@ function ContactForm({ handleClose = () => {} }) {
         variant="filled"
         value={form.subject}
         onChange={handleOnChange}
+        disabled={isSuccessful}
         required
       />
       <TextField
@@ -209,6 +213,7 @@ function ContactForm({ handleClose = () => {} }) {
         variant="filled"
         value={form.messageBody}
         onChange={handleOnChange}
+        disabled={isSuccessful}
         required
       />
 
