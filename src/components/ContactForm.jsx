@@ -37,7 +37,7 @@ const cFrmErrorMessage =  {
 
 const MISSING_REQUIRED_FIELD_FROM_FIELD = "Missing one of the required field";
 const SUCCESS_MESSAGE = "Thank you for your enquiry, we will try to respond" +
-                        "to you within 3 days based on the email/phone provided."
+                        "to you within 3 days based on the email/ phone provided."
 
 const getAllTextInBrackets = (str) => {
   const re = /\[(.*?)\]/g
