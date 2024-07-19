@@ -41,6 +41,33 @@ const getTextInBrackets = (str) => {
   return re.exec(str);
 }
 
+const printErrorMessage = (errors) => {
+  const readableErrorsForUsers = Object.entries(errors).map(item => {
+    switch(item[0]) {
+      case "firstName":
+        return <p>{cFrmErrorMessage.firstNameError}</p>;
+      case "lastName":
+        return <p>{cFrmErrorMessage.lastNameError}</p>;
+      case "phone":
+        return <p>{cFrmErrorMessage.phoneError}</p>;
+      case "email":
+        return <p>{cFrmErrorMessage.emailError}</p>;
+      case "subject":
+        return <p>{cFrmErrorMessage.subjectError}</p>;
+      case "messageBody":
+        return <p>{cFrmErrorMessage.messageBodyError}</p>;
+      case MISSING_REQUIRED_FIELD_FROM_FIELD:
+        return item[1].split("value")
+                      .fiter(match => match)
+                      .map((error,i) => 
+                            <p key={i}>{getTextInBrackets(error)}</p>);
+      default:
+        throw new Error('Unknown Error has been caught in printErrorMessage.');
+    }
+  });
+  return readableErrorsForUsers;
+};
+
 function ContactForm({ handleClose = () => {} }) {
   const [form, setForm] = useState(initFormState);
   const [errors, setErrors] = useState({});
@@ -104,33 +131,6 @@ function ContactForm({ handleClose = () => {} }) {
 
       setErrors(errorData);
     }
-  };
-
-  const printErrorMessage = (errors) => {
-    const readableErrorsForUsers = Object.entries(errors).map(item => {
-      switch(item[0]) {
-        case "firstName":
-          return <p>{cFrmErrorMessage.firstNameError}</p>;
-        case "lastName":
-          return <p>{cFrmErrorMessage.lastNameError}</p>;
-        case "phone":
-          return <p>{cFrmErrorMessage.phoneError}</p>;
-        case "email":
-          return <p>{cFrmErrorMessage.emailError}</p>;
-        case "subject":
-          return <p>{cFrmErrorMessage.subjectError}</p>;
-        case "messageBody":
-          return <p>{cFrmErrorMessage.messageBodyError}</p>;
-        case MISSING_REQUIRED_FIELD_FROM_FIELD:
-          return item[1].split("value")
-                        .fiter(match => match)
-                        .map((error,i) => 
-                             <p key={i}>{getTextInBrackets(error)}</p>);
-        default:
-          throw new Error('Unknown Error has been caught in printErrorMessage.');
-      }
-    });
-    return readableErrorsForUsers;
   };
 
   return (
