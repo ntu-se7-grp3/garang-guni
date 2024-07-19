@@ -120,6 +120,7 @@ function ContactForm({ handleClose = () => {} }) {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
+    setErrors({});
     const allSchema = Joi.object(schema)
                           .or("firstName", "lastName")
                           .or("email", "phone");
