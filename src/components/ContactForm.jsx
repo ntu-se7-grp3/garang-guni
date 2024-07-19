@@ -160,7 +160,7 @@ function ContactForm({ handleClose = () => {}, isDark = false}) {
           Contact Form
         </Typography>
         <Typography variant="body2" component="p">
-          Fill up this form and our team will get back to you within 24 years.
+          Fill up this form and our team will get back to you within 3 working days.
         </Typography>
         <div className={styles.nameField}>
           <TextField
