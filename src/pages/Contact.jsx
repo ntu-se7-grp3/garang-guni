@@ -46,7 +46,10 @@ function Contact() {
           <button className={styles.inquryButton}
                   onClick={toggleInquiryForm}
           >Contact us</button>
-          <ModalDialog isOpen={isShowingForm} handleClose={toggleInquiryForm}/>
+          <ModalDialog isOpen={isShowingForm} 
+                       handleClose={toggleInquiryForm} 
+                       isDark={isDark}
+          />
         </div>
       </div>
     </div>

@@ -5,6 +5,11 @@
   padding: 2rem;
 }
 
+.dark {
+  background-image: linear-gradient(rgba(12,17,75,1),rgba(31,45,197,1));
+  color:white;
+}
+
 .nameField {
   display: flex;
 }
