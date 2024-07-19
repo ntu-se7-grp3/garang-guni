@@ -1,6 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout";
-import Welcome from "./pages/Welcome";
 import Faq from "./pages/Faq";
 import Contact from "./pages/Contact";
 import Follow from "./pages/Follow";
@@ -11,14 +10,16 @@ import List from "./pages/List";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Schedule from "./pages/Schedule";
+import { AuthContextProvider } from "./context/AuthContext";
+import Home from "./pages/Home";
 
 function App() {
   return (
-    <>
+    <AuthContextProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<RootLayout />}>
-            <Route index element={<Welcome />} />
+            <Route index element={<Home />} />
             <Route path="book" element={<BookNow />} />
             <Route path="contact" element={<Contact />} />
             <Route path="faq" element={<Faq />} />
@@ -32,7 +33,8 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </>
+    </AuthContextProvider>
   );
 }
+
 export default App;
