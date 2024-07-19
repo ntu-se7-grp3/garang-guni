@@ -31,38 +31,46 @@ const cFrmErrorMessage =  {
   phoneError: "Invalid phone number! Please enter a valid phone. (8 Digits)",
   emailError: "Invalid email! Plesae enter a valid Email address.",
   subjectError: "Please enter a subject.",
-  messageBodyError: "Please enter a message."
+  messageBodyError: "Please enter a message.",
+  combinationMissingError: (inp) => `One of the ${inp} needs to be filled.`
 };
 
 const MISSING_REQUIRED_FIELD_FROM_FIELD = "Missing one of the required field";
 const SUCCESS_MESSAGE = "Thanks for your enquiry form, we will try to response" +
                         "to you within 3 days based on the number/email provided."
 
-const getTextInBrackets = (str) => {
-  const re = /\[(.*?)\]$/
-  return re.exec(str);
+const getAllTextInBrackets = (str) => {
+  const re = /\[(.*?)\]/g
+  const matches = str.matchAll(re);
+  const ans = [];
+  for (const match of matches) {
+    ans.push(match[0]);
+  }
+  return ans;
 }
 
 const printErrorMessage = (errors) => {
-  const readableErrorsForUsers = Object.entries(errors).map(item => {
+  const readableErrorsForUsers = Object.entries(errors).map((item, idx) => {
     switch(item[0]) {
       case "firstName":
-        return <p>{cFrmErrorMessage.firstNameError}</p>;
+        return <p key={idx}>{cFrmErrorMessage.firstNameError}</p>;
       case "lastName":
-        return <p>{cFrmErrorMessage.lastNameError}</p>;
+        return <p key={idx}>{cFrmErrorMessage.lastNameError}</p>;
       case "phone":
-        return <p>{cFrmErrorMessage.phoneError}</p>;
+        return <p key={idx}>{cFrmErrorMessage.phoneError}</p>;
       case "email":
-        return <p>{cFrmErrorMessage.emailError}</p>;
+        return <p key={idx}>{cFrmErrorMessage.emailError}</p>;
       case "subject":
-        return <p>{cFrmErrorMessage.subjectError}</p>;
+        return <p key={idx}>{cFrmErrorMessage.subjectError}</p>;
       case "messageBody":
-        return <p>{cFrmErrorMessage.messageBodyError}</p>;
+        return <p key={idx}>{cFrmErrorMessage.messageBodyError}</p>;
       case MISSING_REQUIRED_FIELD_FROM_FIELD:
-        return item[1].split("value")
-                      .fiter(match => match)
-                      .map((error,i) => 
-                            <p key={i}>{getTextInBrackets(error)}</p>);
+        /* Get all [x1,x],[x2,x] -> <p>[x1,x]</p> <p>[x2,x]</p> */
+        return getAllTextInBrackets(item[1]).map((errorPairs, i) => 
+          <p key={i}> 
+            {cFrmErrorMessage.combinationMissingError(errorPairs)}
+          </p>
+        );
       default:
         throw new Error('Unknown Error has been caught in printErrorMessage.');
     }
