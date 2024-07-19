@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
-import Joi from "joi-browser"
-import { Button, styled, TextField, Typography } from "@mui/material";
+import { useState } from "react";
+import Joi from "joi-browser";
+import { Alert, Button, TextField, Typography } from "@mui/material";
 
 import styles from "./ContactForm.module.css";
 
@@ -10,28 +10,40 @@ const initFormState = {
   phone: "",
   email: "",
   subject: "",
-  messageBody: ""
+  messageBody: "",
 };
 
 const schema = {
-  firstName: Joi.string().min(1).max(60),
-  lastName: Joi.string().min(1).max(60),
-  phone: Joi.string().regex(/^[0-9]{8}$/),
-  email: Joi.string().email(),
+  firstName: 
+  Joi.string().min(1).max(60)
+  .regex(/^[a-zA-Z]+$/).empty(''),
+  lastName: Joi.string().min(1).max(60)
+  .regex(/^[a-zA-Z]+$/).empty(''),
+  phone: Joi.string().regex(/^[0-9]{8}$/).empty(''),
+  email: Joi.string().email().empty(''),
   subject: Joi.string().min(1).required(),
-  messageBody: Joi.string().min(1).required()
+  messageBody: Joi.string().min(1).required(),
 };
 
-function ContactForm({ handleClose=()=>{} } ) {
+const cFrmErrorMessage =  {
+  firstNameError: "Invalid first name! Please enter a valid name. (Alpha only)",
+  lastNameError: "Invalid last name! Please enter a valid name. (Alpha only)",
+  phoneError: "Invalid phone number! Please enter a valid phone. (8 Digits)",
+  emailError: "Invalid email! Plesae enter a valid Email address.",
+  subjectError: "Please enter a subject.",
+  messageBodyError: "Please enter a message."
+};
+
+const MISSING_REQUIRED_FIELD_FROM_FIELD = "Missing one of the required field";
+
+const getTextInBrackets = (str) => {
+  const re = /\[(.*?)\]$/
+  return re.exec(str);
+}
+
+function ContactForm({ handleClose = () => {} }) {
   const [form, setForm] = useState(initFormState);
-  const [currentFocus, setCurrentFocus] = useState("");
-  const [error, setError] = useState({});
-  
-  const inpRef = useRef("");
-  
-  useEffect(() => {
-    if (inpRef.current !== "") inpRef.current.focus();
-   },[form]);
+  const [errors, setErrors] = useState({});
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
@@ -39,12 +51,12 @@ function ContactForm({ handleClose=()=>{} } ) {
       return {
         ...prevForm,
         [name]: value,
-      }
+      };
     });
 
     const errorMessage = validate(e);
-    setError((error) => {
-      const newError = {...error};
+    setErrors((errors) => {
+      const newError = { ...errors };
       if (errorMessage) {
         newError[name] = errorMessage;
       } else {
@@ -70,108 +82,138 @@ function ContactForm({ handleClose=()=>{} } ) {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    const allSchema = Joi.object(schema).or("firstName","lastName").or("email","phone");
+    const allSchema = Joi.object(schema)
+                          .or("firstName", "lastName")
+                          .or("email", "phone");
     const result = Joi.validate(form, allSchema, { abortEarly: false });
 
     const { error } = result;
-    console.log(error);
 
-    if(!error) {
+    if (!error) {
       // Call the api after the api is created.
       alert("Success");
     } else {
       const errorData = error.details.reduce((acc, curItem) => {
-        const name = curItem.path[0];
+        const name = curItem.path[0] ? curItem.path[0] : MISSING_REQUIRED_FIELD_FROM_FIELD;
         const message = curItem.message;
         const updatedMessage = acc[name] ? acc[name] + "," + message : message;
         acc[name] = updatedMessage;
-
+        
         return acc;
-      },{});
+      }, {});
 
-      setError(errorData);
+      setErrors(errorData);
     }
   };
 
-  const StyledTextField = styled(TextField)(({ theme }) => ({
-    width: "100%",
-    padding: "10px 0px 10px 0px"
-  }));
+  const printErrorMessage = (errors) => {
+    const readableErrorsForUsers = Object.entries(errors).map(item => {
+      switch(item[0]) {
+        case "firstName":
+          return <p>{cFrmErrorMessage.firstNameError}</p>;
+        case "lastName":
+          return <p>{cFrmErrorMessage.lastNameError}</p>;
+        case "phone":
+          return <p>{cFrmErrorMessage.phoneError}</p>;
+        case "email":
+          return <p>{cFrmErrorMessage.emailError}</p>;
+        case "subject":
+          return <p>{cFrmErrorMessage.subjectError}</p>;
+        case "messageBody":
+          return <p>{cFrmErrorMessage.messageBodyError}</p>;
+        case MISSING_REQUIRED_FIELD_FROM_FIELD:
+          return item[1].split("value")
+                        .fiter(match => match)
+                        .map((error,i) => 
+                             <p key={i}>{getTextInBrackets(error)}</p>);
+        default:
+          throw new Error('Unknown Error has been caught in printErrorMessage.');
+      }
+    });
+    return readableErrorsForUsers;
+  };
 
   return (
     <form onSubmit={handleOnSubmit} className={styles.form}>
-      <Typography gutterBottom variant="h5">Contact Form</Typography>
+      <Typography gutterBottom variant="h5">
+        Contact Form
+      </Typography>
       <Typography variant="body2" component="p">
         Fill up this form and our team will get back to you within 24 years.
       </Typography>
       <div className={styles.nameField}>
-        <StyledTextField name="firstName"
-                         inputRef={currentFocus === "firstName" ? inpRef: null}
-                         style={{paddingRight: "5px"}} 
-                         label="First Name" 
-                         variant="filled" 
-                         value={form.firstName}
-                         onChange={handleOnChange}
-                         onFocus={() => setCurrentFocus("firstName")}
-                         />
-        <StyledTextField name="lastName"
-                         inputRef={currentFocus === "lastName" ? inpRef : null}
-                         style={{paddingLeft: "5px"}} 
-                         label="Last Name" 
-                         variant="filled" 
-                         value={form.lastName}
-                         onFocus={() => setCurrentFocus("lastName")}
-                         onChange={handleOnChange}/>
+        <TextField
+          name="firstName"
+          InputProps={{className: styles.contactTextField}}
+          style={{ paddingRight: "5px", width:"50%" }}
+          label="First Name"
+          variant="filled"
+          value={form.firstName}
+          onChange={handleOnChange}
+        />
+        <TextField
+          name="lastName"
+          InputProps={{className: styles.contactTextField}}
+          style={{ paddingLeft: "5px", width:"50%"}}
+          label="Last Name"
+          variant="filled"
+          value={form.lastName}
+          onChange={handleOnChange}
+        />
       </div>
-      <StyledTextField name="phone"
-                       inputRef={currentFocus === "phone" ? inpRef : null}
-                       label="Phone" 
-                       type="tel" 
-                       variant="filled" 
-                       value={form.phone}
-                       onFocus={() => setCurrentFocus("phone")}
-                       onChange={handleOnChange}/>
-      <StyledTextField name="email"
-                       inputRef={currentFocus === "email" ? inpRef : null}
-                       label="Email" 
-                       type="email" 
-                       variant="filled" 
-                       value={form.email}
-                       onFocus={() => setCurrentFocus("email")}
-                       onChange={handleOnChange}/>
-      <StyledTextField name="subject"
-                       inputRef={currentFocus === "subject" ? inpRef : null}
-                       label="Subject" 
-                       variant="filled"
-                       value={form.subject}
-                       onFocus={() => setCurrentFocus("subject")}
-                       onChange={handleOnChange}
-                       required/>
-      <StyledTextField name="messageBody"
-                       inputRef={currentFocus === "messageBody" ? inpRef : null}
-                       label="Message Content" 
-                       multiline 
-                       variant="filled" 
-                       value={form.messageBody}
-                       onFocus={(e) => {
-                        setCurrentFocus("messageBody");
-                        return e.currentTarget.setSelectionRange(
-                          e.currentTarget.value.length,
-                          e.currentTarget.value.length
-                        );
-                      }}
-                       onChange={handleOnChange}
-                       required/>
+      <TextField
+        name="phone"
+        InputProps={{className: styles.contactTextField}}
+        label="Phone"
+        type="tel"
+        variant="filled"
+        value={form.phone}
+        onChange={handleOnChange}
+      />
+      <TextField
+        name="email"
+        InputProps={{className: styles.contactTextField}}
+        label="Email"
+        type="email"
+        variant="filled"
+        value={form.email}
+        onChange={handleOnChange}
+      />
+      <TextField
+        name="subject"
+        InputProps={{className: styles.contactTextField}}
+        label="Subject"
+        variant="filled"
+        value={form.subject}
+        onChange={handleOnChange}
+        required
+      />
+      <TextField
+        name="messageBody"
+        InputProps={{className: styles.contactTextField}}
+        label="Message Content"
+        multiline
+        variant="filled"
+        value={form.messageBody}
+        onChange={handleOnChange}
+        required
+      />
 
       <div className={styles.formButtons}>
-        <Button type="submit" variant="contained" color="primary" >Submit</Button>
-        <Button variant="contained" 
-                onClick={handleClose}
-                style={{marginLeft:"10px"}}
-                >Cancel</Button>
+        <Button type="submit" variant="contained" color="primary">
+          Submit
+        </Button>
+        <Button variant="contained" onClick={handleClose} style={{ marginLeft: "10px" }}>
+          Cancel
+        </Button>
       </div>
+      { Object.keys(errors).length !== 0 && (
+        <Alert className={styles.alertBox} sx={{ mb: 4 }} severity="error">
+          {printErrorMessage(errors)}
+        </Alert>
+      )}
     </form>
-  )
+  );
 }
 
 export default ContactForm;
