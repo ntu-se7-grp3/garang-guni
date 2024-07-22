@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+
 import RootLayout from "./layouts/RootLayout"
 import Welcome from "./pages/Welcome"
 import Faq from "./pages/Faq"

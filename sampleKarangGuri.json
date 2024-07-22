@@ -1,0 +1,53 @@
+[
+    {
+      "createdAt": 1721506271,
+      "token": "70d3af81-7c2d-49a1-b5c4-f82ae8979426",
+      "name": "James Ah",
+      "datesAndLocations": [
+        {
+          "dateTimeRange": {
+            "start": 1721514600,
+            "end": 1724236200
+          },
+          "location": {
+            "name": "Compass One",
+            "latitude": 1.3920777514396903,
+            "longitude": 103.8950325715862
+          }
+        },
+        {
+          "dateTimeRange": {
+            "start": 1724279400,
+            "end": 1724927400
+          },
+          "location": {
+            "name": "Block 248 HDB Choa Chu Kang",
+            "latitude": 1.379062974060338,
+            "longitude": 103.74596633528961
+          }
+        }
+      ],
+      "items": {
+        "scrapMetal": {
+          "pricePerKg": 0.25,
+          "quantityInKg": 3
+        },
+        "aluminiumCans": {
+          "pricePerKg": 0.8,
+          "quantityInKg": 30
+        },
+        "cardboard": {
+          "pricePerKg": 0.11,
+          "quantityInKg": 201
+        },
+        "newspaper": {
+          "pricePerKg": 0.14,
+          "quantityInKg": 2
+        },
+        "others": {
+          "decentQualityTv": 80
+        }
+      },
+      "id": "1"
+    }
+  ]
