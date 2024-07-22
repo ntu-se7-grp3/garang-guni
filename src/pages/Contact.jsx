@@ -5,6 +5,7 @@ import darkContactUsBanner from "../assets/darkContactUsBanner.png";
 import ContactInfoBox from "../components/ContactInfoBox";
 import styles from "./Contact.module.css"
 import ModalDialog from "../components/ModalDialog";
+import ContactForm from "../components/ContactForm";
 
 
 const CONTACT_DETAILS = ["📞 Phone: 87414896", "📧 Email: test@test.com"];
@@ -46,10 +47,9 @@ function Contact() {
           <button className={styles.inquryButton}
                   onClick={toggleInquiryForm}
           >Contact us</button>
-          <ModalDialog isOpen={isShowingForm} 
-                       handleClose={toggleInquiryForm} 
-                       isDark={isDark}
-          />
+          <ModalDialog isOpen={isShowingForm} handleClose={toggleInquiryForm}>
+            <ContactForm handleClose={toggleInquiryForm} isDark={isDark} />
+          </ModalDialog>
         </div>
       </div>
     </div>

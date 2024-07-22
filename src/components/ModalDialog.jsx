@@ -1,11 +1,9 @@
 import { Dialog } from "@mui/material";
 
-import ContactForm from "./ContactForm";
-
-function ModalDialog({ isOpen=false, handleClose=()=>{}, isDark = false}) {
+function ModalDialog({ isOpen=false, handleClose=()=>{}, children}) {
   return (
     <Dialog open={isOpen} onClose={handleClose}>
-      <ContactForm handleClose={handleClose} isDark={isDark} />
+      {children}
     </Dialog>
   )
 }
