@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 
 import styles from "./BookNow.module.css";
 import backEnd from "../api/back-end-api";
@@ -23,6 +24,7 @@ function BookNow() {
   const [dateAndLocations, setDateAndLocations] = useState({});
   const [listOfAvailDates, setlistOfAvailDates]= useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState("");
   const sessionToken = getFakeToken();
 
   useEffect(() => {
@@ -63,6 +65,10 @@ function BookNow() {
     }
   };
 
+  const handleLocationChange = (e) => {
+    setSelectedLocation(e.target.value);
+  };
+
   return (
     <>
       <div>
@@ -85,6 +91,19 @@ function BookNow() {
           <div style={{display:"flex"}}>
             <div className="chooseLocation">
               <p>Location</p>
+              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                <InputLabel>Location Area</InputLabel>
+                <Select 
+                  value={selectedLocation}
+                  label="Location Area"
+                  displayEmpty
+                  onChange={handleLocationChange}
+                >
+                  {locationAreasInSg.map((area, i) => {
+                    return <MenuItem key={i} value={area}>{area}</MenuItem>
+                  })}
+                </Select>
+              </FormControl>
             </div>
             <div className="chooseDate">
               <p>Date</p>
