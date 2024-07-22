@@ -32,6 +32,7 @@ function BookNow() {
   const [listOfAvailDates, setlistOfAvailDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const sessionToken = getFakeToken();
 
   useEffect(() => {
@@ -75,6 +76,10 @@ function BookNow() {
 
   const handleLocationChange = (e) => {
     setSelectedLocation(e.target.value);
+  };
+
+  const handleOpenModal = () => {
+    setIsModalOpen((prevState) => !prevState);
   };
 
   return (
@@ -141,7 +146,7 @@ function BookNow() {
                 wrapperClassName={styles.datePickerWrapper}
               />
             </div>
-            <button className={styles.bookNowButton}>Book Now</button>
+            <button className={styles.bookNowButton} onClick={handleOpenModal}>Book Now</button>
           </div>
         </div>
         <div className={styles.recyclingCircle}>
