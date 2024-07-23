@@ -17,6 +17,7 @@ import {
 import styles from "./BookNowForm.module.css"
 import companyIcon from "../assets/logo.png"
 import BookNowContentRow from "./BookNowContentRow";
+import BookNowEitherOrCheckBox from "./BookNowEitherOrCheckBox";
 
 const initBookNowForm = {
   uploadedFileName: "",
@@ -25,7 +26,7 @@ const initBookNowForm = {
   isCollectionFromHome: false,
   isPaymentByCash: true,
   remarks: "",
-  checkBoxes: {}
+  itemsCheckBoxes: {}
 };
 
 const FORM_BANNER_TEXT = "Request A Booking";
@@ -62,11 +63,12 @@ function BookNowForm({
   const updateCheckBoxes = () => {
     setForm((prevForm) => {
       const states = listOfItems.reduce((acc, item) => {
-                        acc[item] = false;
-                        return acc; }, {});
+        acc[item] = false;
+        return acc; 
+      }, {});
       return {
         ...prevForm,
-        checkBoxes: states
+        itemsCheckBoxes: states
       };
     });
   };
@@ -121,8 +123,8 @@ function BookNowForm({
     setForm((prevForm) => {
       return {
         ...prevForm,
-        checkBoxes: {
-          ...prevForm.checkBoxes,
+        itemsCheckBoxes: {
+          ...prevForm.itemsCheckBoxes,
           [e.target.name]: e.target.checked
         }
       }
@@ -207,7 +209,7 @@ function BookNowForm({
               {listOfItems.map((item, i) => {
                 return <FormControlLabel key={i}  
                         control={
-                          <Checkbox checked={form.checkBoxes.item}
+                          <Checkbox checked={form.itemsCheckBoxes.item}
                             onChange={handleOnCheckBoxChange} 
                             name={item} 
                             />} 
@@ -218,58 +220,28 @@ function BookNowForm({
             </FormGroup>
           </BookNowContentRow>
           <BookNowContentRow header="Is your collection address same as your registered address?">
-            <FormControlLabel  
-                control={<Checkbox checked={form.isSameAddressAsHome}
-                            onChange={handleOnChange} 
-                            name="isSameAddressAsHome" 
-                        />} 
-                label={<span className={styles.formControlLabel}>Yes</span>}
-              />
-              <FormControlLabel  
-                control={<Checkbox checked={!form.isSameAddressAsHome}
-                            onChange={handleOnChange} 
-                            name="isSameAddressAsHome"
-                        />} 
-                label={<span className={styles.formControlLabel}>
-                          No
-                      </span>}
-              />
+            <BookNowEitherOrCheckBox controlName = "isSameAddressAsHome"
+              value = {form.isSameAddressAsHome}
+              onChange = {handleOnChange}
+              option1 = "Yes"
+              option2 = "No"
+             />
           </BookNowContentRow>
           <BookNowContentRow header="Collection Point or Home:">
-            <FormControlLabel  
-              control={<Checkbox checked={!form.isCollectionFromHome}
-                        onChange={handleOnChange} 
-                        name="isCollectionFromHome" 
-                      />} 
-              label={<span className={styles.formControlLabel}>
-                      Collection Point
-                    </span>}
-            />
-            <FormControlLabel  
-              control={<Checkbox checked={form.isCollectionFromHome}
-                        onChange={handleOnChange} 
-                        name="isCollectionFromHome" 
-                      />} 
-              label={<span className={styles.formControlLabel}>Home</span>}
-            />
+            <BookNowEitherOrCheckBox controlName = "isCollectionFromHome"
+              value = {!form.isCollectionFromHome}
+              onChange = {handleOnChange}
+              option1 = "Collection Point"
+              option2 = "isCollectionFromHome"
+             />
           </BookNowContentRow>
           <BookNowContentRow header="Payment by:">
-            <FormControlLabel  
-              control={<Checkbox checked={form.isPaymentByCash}
-                          onChange={handleOnChange} 
-                          name="isPaymentByCash" 
-                      />} 
-              label={<span className={styles.formControlLabel}>Cash</span>}
-            />
-            <FormControlLabel  
-              control={<Checkbox checked={!form.isPaymentByCash}
-                          onChange={handleOnChange} 
-                          name="isPaymentByCash" 
-                      />} 
-              label={<span className={styles.formControlLabel}>
-                        Credit Card / Visa / Master / Paynow / Paylah
-                     </span>}
-            />
+            <BookNowEitherOrCheckBox controlName = "isPaymentByCash"
+              value = {form.isPaymentByCash}
+              onChange = {handleOnChange}
+              option1 = "Cash"
+              option2 = "Credit Card / Visa / Master / Paynow / Paylah"
+             />
           </BookNowContentRow>
           <BookNowContentRow header="Anything else / Remarks:">
             <TextField
