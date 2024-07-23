@@ -219,150 +219,148 @@ function BookNowForm({
 
   return (
     <>
-      <ThemeProvider theme={isDark && darkTheme}>
-        <form onSubmit={handleOnSubmit} className={`${styles.form} ${isDark && styles.dark}`}>
-          <div className={styles.banner}>
-            <span className={styles.bannerText}>{FORM_BANNER_TEXT}</span>
-            <div className={styles.companyLogoAndText}>
-              <img className={styles.companyIcon} src={companyIcon} alt="Company icon" />
-              <div className={styles.companyIconText}>
-                <p>Garang</p>
-                <p>Guni</p>
-              </div>
+      <form onSubmit={handleOnSubmit} className={`${styles.form} ${isDark && styles.dark}`}>
+        <div className={styles.banner}>
+          <span className={styles.bannerText}>{FORM_BANNER_TEXT}</span>
+          <div className={styles.companyLogoAndText}>
+            <img className={styles.companyIcon} src={companyIcon} alt="Company icon" />
+            <div className={styles.companyIconText}>
+              <p>Garang</p>
+              <p>Guni</p>
             </div>
           </div>
-          <div className={styles.bookNowFormContents}>
-            <BookNowContentRow id="bookNowFLocDates">
-              <div className={styles.chooseDate}>
-                  <p>Select a booking date</p>
-                  <DatePicker
-                    showIcon
-                    disabled={isSuccessful}
-                    closeOnScroll={true}
-                    selected={selectedDate}
-                    onChange={handleDateChange}
-                    highlightDates={listOfAvailDates}
-                    dateFormat="dd/MM/YYYY"
-                    filterDate={isSelectable}
-                    placeholderText="Choose a date!"
-                    popperClassName={styles.popper}
-                    wrapperClassName={styles.datePickerWrapper}
-                    popperPlacement="bottom-end"
-                  />
-              </div>
-              <div className={styles.chooseLocation}>
-                <p>Location</p>
-                <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                  <Select
-                    displayEmpty
-                    inputProps={{ "aria-label": "Without label" }}
-                    value={selectedLocation}
-                    onChange={handleLocationChange}
-                    disabled={isSuccessful}
-                  >
-                    <MenuItem value="">
-                      <em>None</em>
-                    </MenuItem>
-                    {convertDateToUnixStr(selectedDate) && 
-                      datesWithLocation[convertDateToUnixStr(selectedDate)]
-                        .locations.map((location, i) => {
-                      return (
-                        <MenuItem key={i} value={location.name}>
-                          {location.name}
-                        </MenuItem>
-                      );
-                    })}
-                  </Select>
-                </FormControl>
-              </div>
-            </BookNowContentRow>
-            <BookNowContentRow header="Upload Your Items:">
-              {!isSuccessful && <div {...getRootProps()} className={`${styles.upload} ${isDragActive ?
-                styles.uploadAfter : styles.uploadBefore}`}>
-                <input {...getInputProps()} />
-                { isDragActive ?
-                  <div>Drop the files here ...</div> :
-                  <div>Drag &amp; Drop files here or click to select. Click on picture to expand.</div>
-                }
-              </div>
-              }
-              <div>
-                {preview && (
-                  <p>
-                    <img className={styles.previewPicture} src={preview} alt="Upload preview"
-                        onClick={togglePreviewPicture} />
-                  </p>
-                )}
-              </div>
-            </BookNowContentRow>
-            <BookNowContentRow header="Describe your items:">
-              <TextField
-                  name="description"
-                  InputProps={{className: styles.contactTextField}}
-                  label="Remarks"
-                  variant="filled"
-                  value={form.description}
-                  onChange={handleOnChange}
+        </div>
+        <div className={styles.bookNowFormContents}>
+          <BookNowContentRow id="bookNowFLocDates">
+            <div className={styles.chooseDate}>
+                <p>Select a booking date</p>
+                <DatePicker
+                  showIcon
                   disabled={isSuccessful}
-                  fullWidth 
-                  required
+                  closeOnScroll={true}
+                  selected={selectedDate}
+                  onChange={handleDateChange}
+                  highlightDates={listOfAvailDates}
+                  dateFormat="dd/MM/YYYY"
+                  filterDate={isSelectable}
+                  placeholderText="Choose a date!"
+                  popperClassName={styles.popper}
+                  wrapperClassName={styles.datePickerWrapper}
+                  popperPlacement="bottom-end"
                 />
-            </BookNowContentRow>
-            <BookNowContentRow id="bookNowCheckBoxs" 
-                              header="Please pick items that match your description.">
-              <FormGroup aria-label="position" row sx={{height: "10vh",overflowY: "auto"}}>
-                {listOfItems.map((item, i) => {
-                  return <FormControlLabel key={i}  
-                          control={
-                            <Checkbox checked={form.itemsCheckBoxes.item}
-                              onChange={handleOnCheckBoxChange} 
-                              name={item} 
-                              disabled={isSuccessful}
-                              />} 
-                          label={<span className={styles.formControlLabel}>
-                                  {item}
-                                </span>}
-                          />})}
-              </FormGroup>
-            </BookNowContentRow>
-            {FORM_QUESTION_DATA.map((data) => {
-              return (
-              <BookNowContentRow key={data.id} id={data.id} 
-                header={data.header}>
-                <BookNowEitherOrCheckBox controlName={data.controlName}
-                  disabled={isSuccessful} 
-                  value = {form[data.controlName]}
-                  onChange = {handleOnChange}
-                  option1 = {data.option1Text}
-                  option2 = {data.option2Text}
-                />
-              </BookNowContentRow>
-              );
-            })}
-            <BookNowContentRow header="Anything else / Remarks:">
-              <TextField
-                name="remarks"
+            </div>
+            <div className={styles.chooseLocation}>
+              <p>Location</p>
+              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                <Select
+                  displayEmpty
+                  inputProps={{ "aria-label": "Without label" }}
+                  value={selectedLocation}
+                  onChange={handleLocationChange}
+                  disabled={isSuccessful}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  {convertDateToUnixStr(selectedDate) && 
+                    datesWithLocation[convertDateToUnixStr(selectedDate)]
+                      .locations.map((location, i) => {
+                    return (
+                      <MenuItem key={i} value={location.name}>
+                        {location.name}
+                      </MenuItem>
+                    );
+                  })}
+                </Select>
+              </FormControl>
+            </div>
+          </BookNowContentRow>
+          <BookNowContentRow header="Upload Your Items:">
+            {!isSuccessful && <div {...getRootProps()} className={`${styles.upload} ${isDragActive ?
+              styles.uploadAfter : styles.uploadBefore}`}>
+              <input {...getInputProps()} />
+              { isDragActive ?
+                <div>Drop the files here ...</div> :
+                <div>Drag &amp; Drop files here or click to select. Click on picture to expand.</div>
+              }
+            </div>
+            }
+            <div>
+              {preview && (
+                <p>
+                  <img className={styles.previewPicture} src={preview} alt="Upload preview"
+                      onClick={togglePreviewPicture} />
+                </p>
+              )}
+            </div>
+          </BookNowContentRow>
+          <BookNowContentRow header="Describe your items:">
+            <TextField
+                name="description"
                 InputProps={{className: styles.contactTextField}}
                 label="Remarks"
                 variant="filled"
-                value={form.remarks}
+                value={form.description}
                 onChange={handleOnChange}
                 disabled={isSuccessful}
-                multiline
                 fullWidth 
+                required
+              />
+          </BookNowContentRow>
+          <BookNowContentRow id="bookNowCheckBoxs" 
+                            header="Please pick items that match your description.">
+            <FormGroup aria-label="position" row sx={{height: "10vh",overflowY: "auto"}}>
+              {listOfItems.map((item, i) => {
+                return <FormControlLabel key={i}  
+                        control={
+                          <Checkbox checked={form.itemsCheckBoxes.item}
+                            onChange={handleOnCheckBoxChange} 
+                            name={item} 
+                            disabled={isSuccessful}
+                            />} 
+                        label={<span className={styles.formControlLabel}>
+                                {item}
+                              </span>}
+                        />})}
+            </FormGroup>
+          </BookNowContentRow>
+          {FORM_QUESTION_DATA.map((data) => {
+            return (
+            <BookNowContentRow key={data.id} id={data.id} 
+              header={data.header}>
+              <BookNowEitherOrCheckBox controlName={data.controlName}
+                disabled={isSuccessful} 
+                value = {form[data.controlName]}
+                onChange = {handleOnChange}
+                option1 = {data.option1Text}
+                option2 = {data.option2Text}
               />
             </BookNowContentRow>
-            <div className={styles.formButtons}>
-              <Button type="submit" variant="contained" color="primary">
-                Submit
-              </Button>
-              <Button variant="contained" onClick={handleClose} style={{ marginLeft: "10px" }}>
-                Cancel
-              </Button>
-            </div>
+            );
+          })}
+          <BookNowContentRow header="Anything else / Remarks:">
+            <TextField
+              name="remarks"
+              InputProps={{className: styles.contactTextField}}
+              label="Remarks"
+              variant="filled"
+              value={form.remarks}
+              onChange={handleOnChange}
+              disabled={isSuccessful}
+              multiline
+              fullWidth 
+            />
+          </BookNowContentRow>
+          <div className={styles.formButtons}>
+            <Button type="submit" variant="contained" color="primary">
+              Submit
+            </Button>
+            <Button variant="contained" onClick={handleClose} style={{ marginLeft: "10px" }}>
+              Cancel
+            </Button>
           </div>
-        </form>
-      </ThemeProvider>
+        </div>
+      </form>
       <ModalDialog isOpen={isPreviewOpen} handleClose={togglePreviewPicture}>
         <div>
           <img className={styles.enlargedBiggerPic} src={preview} alt="Upload preview" />
