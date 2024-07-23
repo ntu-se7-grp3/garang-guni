@@ -1,0 +1,85 @@
+.container {
+    padding: 20px;
+    background-color:rgb(216, 245, 203);
+    border-radius: 20px;
+    color: #000000;
+    font-size: 25px;
+    text-align: center;
+}
+
+.introPhoto {
+    max-width: 80%;
+    height:auto;
+    margin: 0 auto;
+    border-radius: 8px;
+}
+
+.introduction h2 {
+    color: #004985;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.introduction div {
+    margin: 10px;
+}
+
+.introduction:hover h2 {
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes shake {
+    0% { transform: translatex(0);}
+    25% { transform: translatex(-10px);}
+    50% { transform: translatex(5px);}
+    75% { transform: translatex(-5px);}
+    100% { transform: translatex(0);}
+}
+
+hr {
+    width : 80%;
+    margin: 20px auto;
+    border: 1px solid lightgrey;
+}
+
+.whoAreWe {
+    text-align: center;
+}
+
+.whoAreWe h2{
+    color: blue;
+
+}
+
+.icon {
+    font-size: 25px;
+    margin-right: 10px;
+    color: green;
+}
+
+.photo {
+    width: 400px;
+    height:300px;
+    margin: 10px;
+    border-radius: 8px;
+    
+}
+
+.whySpecial p {
+    margin-bottom: 20px;
+}
+
+.tryUs {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.link {
+    color: #3f51b5;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
