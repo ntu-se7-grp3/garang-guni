@@ -6,9 +6,7 @@ function RootLayout() {
   return (
     <div>
       <Header />
-      <main style={{ paddingTop: "200px" }}>
-        <Outlet />
-      </main>
+      <Outlet />
       <Footer />
     </div>
   );
