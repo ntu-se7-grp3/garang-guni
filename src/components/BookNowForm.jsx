@@ -250,7 +250,7 @@ function BookNowForm({
                 />
             </div>
             <div className={styles.chooseLocation}>
-              <p>Location</p>
+              <p className={styles.locationText}>Location</p>
               <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
                 <Select
                   displayEmpty

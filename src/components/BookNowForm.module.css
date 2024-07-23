@@ -118,3 +118,7 @@
 .enlargedBiggerPic {
   object-fit: cover;
 }
+
+.locationText {
+  padding-left: 8px;
+}
