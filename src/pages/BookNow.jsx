@@ -49,7 +49,6 @@ function BookNow() {
   const sessionToken = getFakeToken();
 
   useEffect(() => {
-    console.log("Getting date and location");
     getDatesAndLocations();
     getItems();
   }, []);

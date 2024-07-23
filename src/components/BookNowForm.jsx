@@ -12,7 +12,8 @@ import {
     FormGroup,
     FormControlLabel,
     TextField,
-    Button
+    Button,
+    Alert
     } from "@mui/material";
 
 import styles from "./BookNowForm.module.css"
@@ -63,12 +64,13 @@ const darkTheme = createTheme({
 });
 
 const schema = {
-  description: Joi.string().min(1),
+  description: Joi.string().min(3),
   isSameAddressAsHome: Joi.boolean(),
   isCollectingFromCP: Joi.boolean(),
   isPaymentByCash: Joi.boolean(),
   remarks: Joi.string().empty(''),
-  itemsCheckBoxes: Joi.object()
+  itemsCheckBoxes: Joi.object(),
+
 };
 
 function BookNowForm({ 
@@ -89,6 +91,7 @@ function BookNowForm({
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const [errors, setErrors] = useState({});
   const [isSuccessful, setIsSuccessful] = useState(false);
+  const [isErrorPageOpen, setIsErrorPageOpen] = useState(false);
   
   const onDrop = useCallback(acceptedFiles => {
     const file = new FileReader;
@@ -147,6 +150,7 @@ function BookNowForm({
       }, {});
 
       setErrors(errorData);
+      setIsErrorPageOpen((prevState) => !prevState);
     }
   };
 
@@ -207,6 +211,11 @@ function BookNowForm({
   const togglePreviewPicture = () => {
     setIsPreviewOpen((prevState) => !prevState);
   };
+
+  const toggleErrorPage = () => {
+    setIsErrorPageOpen((prevState) => !prevState);
+  };
+
 
   return (
     <>
@@ -359,6 +368,11 @@ function BookNowForm({
           <img className={styles.enlargedBiggerPic} src={preview} alt="Upload preview" />
         </div>
       </ModalDialog>
+      <ModalDialog isOpen={isErrorPageOpen} handleClose={toggleErrorPage}>
+        <div>
+          <Alert severity="error">{Object.entries(errors).map(error => error[1])}</Alert>
+        </div>
+      </ModalDialog> 
     </>
   )
 
