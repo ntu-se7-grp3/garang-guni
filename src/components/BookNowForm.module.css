@@ -97,3 +97,24 @@
   align-items: center;
   justify-content: flex-end;
 }
+
+.upload {
+  padding: 15px;
+}
+
+.uploadBefore {
+  border: dashed 1px #ddd;
+}
+
+.uploadAfter {
+  border: dashed 2px #333;
+}
+
+.previewPicture {
+  margin-left: 20px;
+  max-height: 30px;
+}
+
+.enlargedBiggerPic {
+  object-fit: cover;
+}

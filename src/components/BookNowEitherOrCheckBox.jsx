@@ -10,17 +10,17 @@ function BookNowEitherOrCheckBox({
   value = false,
   onChange=()=>{},
   option1 = "",
-  option2 = ""
-
+  option2 = "",
+  disabled = false
   }) {
   return (
     <>
       <FormControlLabel
-        control={<Checkbox checked={value} onChange={onChange} name={controlName} />}
+        control={<Checkbox checked={value} onChange={onChange} name={controlName} disabled={disabled}/>}
         label={<span className={styles.formControlLabel}>{option1}</span>}
       />
       <FormControlLabel
-        control={<Checkbox checked={!value} onChange={onChange} name={controlName} />}
+        control={<Checkbox checked={!value} onChange={onChange} name={controlName} disabled={disabled}/>}
         label={<span className={styles.formControlLabel}>{option2}</span>}
       />
     </>
