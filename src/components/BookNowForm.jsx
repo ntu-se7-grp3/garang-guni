@@ -23,13 +23,37 @@ const initBookNowForm = {
   uploadedFileName: "",
   description: "",
   isSameAddressAsHome: true,
-  isCollectionFromHome: false,
+  isCollectingFromCP: true,
   isPaymentByCash: true,
   remarks: "",
   itemsCheckBoxes: {}
 };
 
 const FORM_BANNER_TEXT = "Request A Booking";
+
+const FORM_QUESTION_DATA = [
+  {
+    id:"",
+    header: "Is your collection address same as your registered address?",
+    controlName: "isSameAddressAsHome",
+    option1Text: "Yes",
+    option2Text: "No"
+  },
+  {
+    id:"",
+    header: "Which collection point do you want to choose?",
+    controlName: "isCollectingFromCP",
+    option1Text: "Designated Collection Point",
+    option2Text: "Home"
+  },
+  {
+    id:"",
+    header: "Payment Method",
+    controlName: "isPaymentByCash",
+    option1Text: "Cash",
+    option2Text: "Credit Card / Visa / Master / Paynow / Paylah"
+  }
+];
 
 const darkTheme = createTheme({
   palette: {
@@ -219,30 +243,19 @@ function BookNowForm({
                         />})}
             </FormGroup>
           </BookNowContentRow>
-          <BookNowContentRow header="Is your collection address same as your registered address?">
-            <BookNowEitherOrCheckBox controlName = "isSameAddressAsHome"
-              value = {form.isSameAddressAsHome}
-              onChange = {handleOnChange}
-              option1 = "Yes"
-              option2 = "No"
-             />
-          </BookNowContentRow>
-          <BookNowContentRow header="Collection Point or Home:">
-            <BookNowEitherOrCheckBox controlName = "isCollectionFromHome"
-              value = {!form.isCollectionFromHome}
-              onChange = {handleOnChange}
-              option1 = "Collection Point"
-              option2 = "isCollectionFromHome"
-             />
-          </BookNowContentRow>
-          <BookNowContentRow header="Payment by:">
-            <BookNowEitherOrCheckBox controlName = "isPaymentByCash"
-              value = {form.isPaymentByCash}
-              onChange = {handleOnChange}
-              option1 = "Cash"
-              option2 = "Credit Card / Visa / Master / Paynow / Paylah"
-             />
-          </BookNowContentRow>
+          {FORM_QUESTION_DATA.map((data) => {
+            return (
+            <BookNowContentRow key={data.id} id={data.id} 
+              header={data.header}>
+              <BookNowEitherOrCheckBox controlName={data.controlName}
+                value = {form[data.controlName]}
+                onChange = {handleOnChange}
+                option1 = {data.option1Text}
+                option2 = {data.option2Text}
+              />
+            </BookNowContentRow>
+            );
+          })}
           <BookNowContentRow header="Anything else / Remarks:">
             <TextField
               name="remarks"
@@ -256,7 +269,6 @@ function BookNowForm({
               fullWidth 
             />
           </BookNowContentRow>  
-
           <div className={styles.formButtons}>
             <Button type="submit" variant="contained" color="primary">
               Submit
