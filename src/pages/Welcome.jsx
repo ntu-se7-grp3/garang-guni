@@ -10,24 +10,19 @@ function Welcome() {
   return (
     <div className={styles.container}>
       <div className={styles.introduction}>
-        <img
-          src={karungGuni}
-          alt="karung guni uncle photo"
-          className={styles.introPhoto}
-        />
+        <img src={karungGuni} alt="karung guni uncle photo" className={styles.introPhoto} />
         <div>
           <h2>"GA-RANG-GU-NI ! BA-BU-BA-BU!"</h2>
           <p>
-            Ga-Rang-Gu-Ni also known as <em>Karung Guni</em>. The name is Malay,
-            which translates to <em>'gunny sack'</em> in English.{" "}
+            Ga-Rang-Gu-Ni also known as <em>Karung Guni</em>. The name is Malay, which translates to{" "}
+            <em>'gunny sack'</em> in English.{" "}
           </p>
 
           <h2>"POH-ZHUA! GU-SA-KOR! PAI_LEH-LIO! DIAN-SI-KI!..."</h2>
           <p>
-            They usually collect unwanted household items, and would range from
-            old electronics, newspapers, to clothing and furniture. It started
-            in 1970s, and has since become a significant part of Singapore's
-            recycling backbone (<em>rag-and-bone</em>).
+            They usually collect unwanted household items, and would range from old electronics, newspapers, to clothing
+            and furniture. It started in 1970s, and has since become a significant part of Singapore's recycling
+            backbone (<em>rag-and-bone</em>).
           </p>
         </div>
       </div>
@@ -35,13 +30,10 @@ function Welcome() {
       <div className={styles.whoAreWe}>
         <h2>Who Are We</h2>
         <p>
-          We are <strong>GarangKuni company</strong>, that pay the best rate for
-          your trash. "We are happy to take the junk you have and pay you for
-          it! No need to carry everything to the dump yourself". <br /> We use
-          this website application to simplifty the collection process between
-          the collector and households. With this apps, we would increase the
-          efficiency and streamline the usual processes a karung guni usually
-          has to go through.
+          We are <strong>GarangKuni company</strong>, that pay the best rate for your trash. "We are happy to take the
+          junk you have and pay you for it! No need to carry everything to the dump yourself". <br /> We use this
+          website application to simplifty the collection process between the collector and households. With this apps,
+          we would increase the efficiency and streamline the usual processes a karung guni usually has to go through.
         </p>
         <div>
           <img src={karungGuni2} alt="team photo" className={styles.photo} />
@@ -53,13 +45,11 @@ function Welcome() {
         <div className={styles.whySpecial}>
           <p>
             <FaThumbsUp className={styles.icon} />
-            We provide <strong>free collection service</strong> right on your
-            doorstep
+            We provide <strong>free collection service</strong> right on your doorstep
           </p>
           <p>
             <FaThumbsUp className={styles.icon} />
-            we got <strong>wide coverage</strong> and routine around the island
-            everyweek
+            we got <strong>wide coverage</strong> and routine around the island everyweek
           </p>
           <p>
             <FaThumbsUp className={styles.icon} />
@@ -67,18 +57,15 @@ function Welcome() {
           </p>
           <p>
             <FaThumbsUp className={styles.icon} />
-            We do <strong>online payment</strong> if your are not around. Just
-            simply put outside your door.
+            We do <strong>online payment</strong> if your are not around. Just simply put outside your door.
           </p>
           <p>
             <FaThumbsUp className={styles.icon} />
-            We also help you do donation, collect and the earning will be donate
-            to those needed.
+            We also help you do donation, collect and the earning will be donate to those needed.
           </p>
           <p>
             <FaThumbsUp className={styles.icon} />
-            we are expanding! We will make our website an online second hand
-            market place!
+            we are expanding! We will make our website an online second hand market place!
           </p>
         </div>
         <hr />

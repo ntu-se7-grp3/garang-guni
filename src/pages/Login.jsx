@@ -1,7 +1,3 @@
-function Login () {
-    return (
-        <p>Login page</p>
-    )
-}
+function Login() {}
 
 export default Login;
