@@ -8,6 +8,8 @@ import { FormControl, Select, MenuItem } from "@mui/material";
 import styles from "./BookNow.module.css";
 import backEnd from "../api/back-end-api";
 import recyclingCircle from "../assets/recycleCircle.png";
+import ModalDialog from "../components/ModalDialog";
+import BookNowForm from "../components/BookNowForm";
 
 const HAIKU = ["Time for new chapters", "Treasure await new HANDS", "Book your slot today"];
 
@@ -25,19 +27,31 @@ const isValidSession = (token) => {
   return token === "70d3af81-7c2d-49a1-b5c4-f82ae8979426";
 };
 
-const locationAreasInSg = ["Central", "East", "North", "North-East", "West"];
+const convertDateToUnixStr = (dateObj) => {
+  if (dateObj === null) return null;
+  return (dateObj.getTime()/1000).toString();
+}
+
+const formatVariableToReadableText = (variableName) => {
+  const nameArr = variableName.split(/(?=[A-Z])/);
+  const firstName = nameArr[0];
+  nameArr[0] = firstName[0].toUpperCase() + firstName.slice(1);
+  return nameArr.join(' ');
+}
 
 function BookNow() {
-  const [dateAndLocations, setDateAndLocations] = useState({});
+  const [datesWithLocation, setDatesWithLocation] = useState({});
   const [listOfAvailDates, setlistOfAvailDates] = useState([]);
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [listOfItems, setListOfItems] = useState([]);
   const sessionToken = getFakeToken();
 
   useEffect(() => {
     console.log("Getting date and location");
     getDatesAndLocations();
+    getItems();
   }, []);
 
   const getDatesAndLocations = async () => {
@@ -48,15 +62,40 @@ function BookNow() {
         return;
       }
       const response = await backEnd.get("/dateAndLocations");
-      setDateAndLocations(response.data[0]);
-      console.log("✅ Data retrieved");
+      setDatesWithLocation(response.data[0].dateWithLocation);
+      console.log("✅ getDatesAndLocations Data retrieved");
       console.log("⏳ Converting to list of available dates");
       setlistOfAvailDates(
         Object.keys(response.data[0].dateWithLocation).map((unixStr) => {
           return new Date(parseInt(unixStr) * 1000);
         }),
       );
-      console.log("✅ Converted Successfully");
+      console.log("✅ Converted Dates Successfully");
+    } catch (error) {
+      console.error(`🚨 Error: ${error.code}(${error.response.status}): ${error.message}`);
+    } finally {
+      console.log("✅ getDatesAndLocations ran successfully!");
+    }
+  };
+
+  const getItems = async () => {
+    try {
+      console.log("🔎Starting getItem");
+      if (!isValidSession(sessionToken)) {
+        console.error(`🚨 Error: Forbidden (403): Please log In with correct credientials!`);
+        return;
+      }
+      const response = await backEnd.get("/Karang-guni");
+      console.log("✅ getItems Data retrieved");
+      console.log("⏳ Converting to list of available items");
+      const itemsArr = [];
+      response.data.forEach((person) => 
+        Object.entries(person.items).forEach((item) => itemsArr.push(item[0]))
+      );
+      const uniqueItems = Array.from(new Set(itemsArr))
+      const formattedItems = uniqueItems.map((item) => formatVariableToReadableText(item));
+      setListOfItems(formattedItems);
+      console.log("✅ Converted items Successfully");
     } catch (error) {
       console.error(`🚨 Error: ${error.code}(${error.response.status}): ${error.message}`);
     } finally {
@@ -78,7 +117,7 @@ function BookNow() {
     setSelectedLocation(e.target.value);
   };
 
-  const handleOpenModal = () => {
+  const handleToggleModal = () => {
     setIsModalOpen((prevState) => !prevState);
   };
 
@@ -119,10 +158,12 @@ function BookNow() {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  {locationAreasInSg.map((area, i) => {
+                  {convertDateToUnixStr(selectedDate) && 
+                    datesWithLocation[convertDateToUnixStr(selectedDate)]
+                      .locations.map((location, i) => {
                     return (
-                      <MenuItem key={i} value={area}>
-                        {area}
+                      <MenuItem key={i} value={location.name}>
+                        {location.name}
                       </MenuItem>
                     );
                   })}
@@ -139,19 +180,31 @@ function BookNow() {
                 highlightDates={listOfAvailDates}
                 dateFormat="dd/MM/YYYY"
                 filterDate={isSelectable}
-                isClearable
                 placeholderText="Choose a date!"
                 popperPlacement="top-end"
                 popperClassName={styles.popper}
                 wrapperClassName={styles.datePickerWrapper}
               />
             </div>
-            <button className={styles.bookNowButton} onClick={handleOpenModal}>Book Now</button>
+            <button className={styles.bookNowButton} onClick={handleToggleModal}>Book Now</button>
           </div>
         </div>
         <div className={styles.recyclingCircle}>
           <img src={recyclingCircle} alt="circle" />
         </div>
+        <ModalDialog isOpen={isModalOpen} handleClose={handleToggleModal}>
+          <BookNowForm handleClose={handleToggleModal} 
+                       handleDateChange={handleDateChange}
+                       isSelectable={isSelectable}
+                       handleLocationChange={handleLocationChange}
+                       convertDateToUnixStr={convertDateToUnixStr}
+                       isDark={false} 
+                       selectedDate={selectedDate} 
+                       listOfAvailDates={listOfAvailDates}
+                       datesWithLocation={datesWithLocation}
+                       selectedLocation={selectedLocation} 
+                       listOfItems={listOfItems}/>
+        </ModalDialog>
       </div>
     </>
   );

@@ -1,0 +1,99 @@
+.form {
+  height: 90vh;
+  min-width: 600px;
+  font-size: 0.8rem;
+}
+
+.banner {
+  margin-top: 7%;
+  margin-bottom: 4%;
+  display: flex;
+  height: 80px;
+  background-color: #FFF8E1;
+}
+
+.bannerText {
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
+  font-size: clamp(1.5rem, 2.5rem, 4rem);
+  padding: 0px 20px;
+  background-color: white;
+  line-height: 1em;
+}
+
+.companyLogoAndText {
+  display: flex;
+  height: 100%;
+  min-width: 45%;
+}
+
+.companyIcon {
+  height: 100%;
+  margin-left: 10px;
+}
+
+.companyIconText {
+  margin: 10px;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.companyIconText p {
+  margin: 0px;
+}
+
+.chooseDate {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+  z-index: 9;
+}
+
+.chooseLocation {
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+
+.chooseLocation p {
+  margin-left: 8px
+}
+
+.datePickerWrapper {
+  margin: 8px 0px;
+}
+
+.datePickerWrapper div {
+  display:flex;
+  align-items: center;
+}
+
+.datePickerWrapper input {
+  height: 25px; 
+  padding-left: 30px;
+  font-size: 16px;
+}
+
+.formControlLabel {
+  font-size: 0.8rem;
+}
+
+.contactTextField input{
+  font-size: 0.8rem;
+}
+
+.contactTextField textarea{
+  font-size: 0.8rem;
+}
+
+.formButtons {
+  width: calc(100% - 16%);
+  margin: 5px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
