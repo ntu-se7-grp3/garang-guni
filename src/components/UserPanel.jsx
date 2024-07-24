@@ -1,13 +1,13 @@
 import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 import { NavLink } from "react-router-dom";
 import styles from "./UserPanel.module.css";
 import profile2 from "../assets/profile2.png";
 import manage from "../assets/managebooking.png";
 import setting from "../assets/setting.png";
+import { UserContext } from "../context/user-context";
 
 function UserPanel({ isOpen }) {
-  const { logout } = useContext(AuthContext);
+  const { handleLogout } = useContext(UserContext);
 
   return (
     <div className={`${styles.userPanel} ${isOpen ? styles.userPanelOpen : ""}`}>
@@ -30,7 +30,7 @@ function UserPanel({ isOpen }) {
         </NavLink>
         <br />
 
-        <button onClick={logout}>Log Out</button>
+        <button onClick={handleLogout}>Log Out</button>
       </div>
     </div>
   );

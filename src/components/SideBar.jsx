@@ -10,7 +10,7 @@ function SideBar({ isOpen }) {
   return (
     <div className={`${styles.sideBar} ${isOpen ? styles.sideBarOpen : ""}`}>
       <div className={styles.barContent}>
-        <NavLink to="/home">
+        <NavLink to="/">
           <img src={home_logo} alt="home icon" className={styles.sideBar_icon} />
           <p>Home</p>
         </NavLink>
@@ -28,7 +28,7 @@ function SideBar({ isOpen }) {
         </NavLink>
         <hr />
 
-        <NavLink to="/booknow">
+        <NavLink to="/book">
           <img src={booknow_logo} alt="booknow icon" className={styles.sideBar_icon} />
           <p>Book Now</p>
         </NavLink>

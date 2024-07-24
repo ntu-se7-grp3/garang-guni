@@ -4,11 +4,13 @@ import Footer from "../components/Footer";
 
 function RootLayout() {
   return (
-    <div>
+    <>
       <Header />
-      <Outlet />
+      <div style={{ marginTop: "150px" }}>
+        <Outlet />
+      </div>
       <Footer />
-    </div>
+    </>
   );
 }
 
