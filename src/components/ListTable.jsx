@@ -6,8 +6,8 @@ function ListTable({ datas, picturePaths }) {
       <thead>
         <tr>
           <th>Objects</th>
-          <th>Accepted Items✔️</th>
-          <th>Not Accepted Items❌</th>
+          <th>Accepted Items ✔️</th>
+          <th>Not Accepted Items ❌</th>
         </tr>
       </thead>
       <tbody>
@@ -24,18 +24,34 @@ function ListTable({ datas, picturePaths }) {
               </div>
             </td>
             <td>
-              <img
-                src={picturePaths[data[0]].ACCEPTED}
-                alt={`${data[0]} accepted picture`}
-                className={styles.tableImg}
-              />
+              <div className={styles.tableContent}>
+                {picturePaths[data[0]].ACCEPTED.map((imgSrc, i) => {
+                  return (
+                    <>
+                      <img key={i} 
+                          src={imgSrc} 
+                          alt={`${data[0]} accepted logo`} 
+                          className={styles.tableImg}
+                      />
+                      <div id="blank" className={styles.tableImg}></div>
+                    </>
+                  );})}
+              </div>
             </td>
             <td>
-              <img
-                src={picturePaths[data[0]].REJECTED}
-                alt={`${data[0]} rejected picture`}
-                className={styles.tableImg}
-              />
+              <div className={styles.tableContent}>
+                {picturePaths[data[0]].REJECTED.map((imgSrc, i) => {
+                  return (
+                    <>
+                      <img key={i} 
+                          src={imgSrc} 
+                          alt={`${data[0]} rejected logo`} 
+                          className={styles.tableImg}
+                      />
+                      <div id="blank" className={styles.tableImg}></div>
+                    </>
+                  );})}
+              </div>
             </td>
           </tr>
         ))}
