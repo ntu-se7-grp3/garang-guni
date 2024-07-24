@@ -27,17 +27,11 @@ function ListTable({ datas, picturePaths }) {
               <div className={styles.tableContent}>
                 {picturePaths[data[0]].ACCEPTED.map((imgSrc, i) => {
                   return (
-                    <div key={i}>
-                      <img
-                          src={imgSrc} 
-                          alt={`${data[0]} accepted logo`} 
-                          className={styles.tableImg}
-                      />
-                      { 
-                        i < picturePaths[data[0]].ACCEPTED.length &&
-                        <div id="blank" className={styles.tableImg}></div>
-                      }
-                    </div>
+                    <img key={i}
+                        src={imgSrc} 
+                        alt={`${data[0]} accepted logo`} 
+                        className={styles.tableImg}
+                    />
                   );})}
               </div>
             </td>
@@ -45,17 +39,11 @@ function ListTable({ datas, picturePaths }) {
               <div className={styles.tableContent}>
                 {picturePaths[data[0]].REJECTED.map((imgSrc, i) => {
                   return (
-                    <div key={i}>
-                      <img
-                          src={imgSrc} 
-                          alt={`${data[0]} rejected logo`} 
-                          className={styles.tableImg}
-                      />
-                      { 
-                        i < picturePaths[data[0]].REJECTED.length &&
-                        <div id="blank" className={styles.tableImg}></div>
-                      }
-                    </div>
+                    <img key={i}
+                        src={imgSrc} 
+                        alt={`${data[0]} rejected logo`} 
+                        className={styles.tableImg}
+                    />
                   );})}
               </div>
             </td>
