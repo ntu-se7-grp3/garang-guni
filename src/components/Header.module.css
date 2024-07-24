@@ -1,8 +1,8 @@
 .header {
-  width: 100%;
+  width: 100vw;
   height: 150px;
   background-color: lightgreen;
-  display: fixed;
+  position: fixed;
   z-index: 1000;
 }
 
