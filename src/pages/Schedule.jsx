@@ -83,7 +83,7 @@ function Schedule() {
       <br />
       <p>
         Got Something to trade with us? Click{" "}
-        <NavLink to="/booking" style={{ textDecoration: "underline" }}>
+        <NavLink to="/book" style={{ textDecoration: "underline" }}>
           here
         </NavLink>{" "}
         to book
