@@ -1,0 +1,43 @@
+.banner {
+  background-image: linear-gradient(to right,rgba(40,201,149,1),rgba(37,174,214,1));
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: calc(5vh + 5vw);
+  margin-top: 2vh;
+}
+
+.bannerContent {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 2 * 10%);
+  width: 100%;
+}
+
+.bannerContent img{
+  object-fit: contain;
+  padding: 30px;
+}
+
+.bannerContent img{
+  height: 100%;
+  padding: 30px;
+}
+
+.table {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.footer{
+  margin: 0 15%;
+  font-weight: bold;
+}
+
+.disclaimer {
+  margin: 0 15%;
+  font-size: 0.8rem;
+  color:rgba(0,0,0,0.3);
+}
