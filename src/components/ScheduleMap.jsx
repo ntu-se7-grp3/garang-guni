@@ -1,4 +1,4 @@
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { MapContainer, TileLayer, Marker, Popup, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import styles from "./ScheduleMap.module.css";
@@ -80,19 +80,26 @@ function ScheduleMap() {
       />
       {stations.map((station, index) => (
         <Marker key={index} position={station.position} icon={defaultIcon}>
+          <Tooltip direction="top" offset={[0, -50]} opacity={1} permanent className={styles.tooltip}>
+            {station.date}
+          </Tooltip>
           <Popup>
             <div className={styles.popupContent}>
-              <img src={station.photo} alt={station.name} className={styles.stationPhoto} />
-              <h3>{station.name}</h3>
-              <p>
-                <strong>Address:</strong> {station.address}
-              </p>
-              <p>
-                <strong>Collection Time:</strong> {station.time}
-              </p>
-              <p>
-                <strong>Date:</strong> {station.date}
-              </p>
+              <div className={styles.stationDetail}>
+                <img src={station.photo} alt={station.name} className={styles.stationPhoto} />
+                <h3>{station.name}</h3>
+              </div>
+              <div className={styles.stationDetail}>
+                <p>
+                  <strong>Address:</strong> {station.address}
+                </p>
+                <p>
+                  <strong>Collection Time:</strong> {station.time}
+                </p>
+                <p>
+                  <strong>Date:</strong> {station.date}
+                </p>
+              </div>
             </div>
           </Popup>
         </Marker>
