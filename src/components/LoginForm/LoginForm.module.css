@@ -1,0 +1,22 @@
+.loginForm {
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+}
+
+/* .inputField {
+  background: #eee;
+} */
+
+/* .loginBtn:active {
+  transform: scale(0.95);
+}
+
+.loginBtn:focus {
+  outline: none;
+} */
