@@ -73,7 +73,7 @@ function Header() {
             onClick={() => setIsSideBarOpen((prevState) => !prevState)}
           />
           <div className={styles.username}>
-            {isLoggedIn ? `Hello, ${isLoggedIn.username}` : <NavLink to="/login">Login/Register</NavLink>}
+            {isLoggedIn ? `Hello, ${isLoggedIn.username}` : <NavLink to="/auth">Login/Register</NavLink>}
           </div>
         </div>
       </div>
