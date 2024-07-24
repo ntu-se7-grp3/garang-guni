@@ -242,6 +242,7 @@ export default function RegisterForm({ onLoad }) {
   const handleRegister = async (event) => {
     event.preventDefault();
 
+    setError({});
     const result = Joi.validate(registerForm, schema, { abortEarly: false });
     const { error } = result;
 
