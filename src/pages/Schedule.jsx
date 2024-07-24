@@ -1,5 +1,3 @@
-function Schedule() {
-
-}
+function Schedule() {}
 
 export default Schedule;
