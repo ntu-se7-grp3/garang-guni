@@ -6,7 +6,10 @@ function RootLayout() {
   return (
     <>
       <Header />
-      <Outlet />
+      <div style={{ marginTop: "150px" }}>
+        <Outlet />
+      </div>
+
       <Footer />
     </>
   );
