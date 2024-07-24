@@ -250,7 +250,18 @@ export default function RegisterForm({ onLoad }) {
         onLoad(true);
         const hashedPassword = CryptoJS.HmacSHA256(registerForm['password'], key).toString();
         delete registerForm['confirmPassword'];
-        const response = await authApi.post(`/user`, { ...registerForm, password: hashedPassword });
+        const updatedForm = {
+          ...registerForm,
+          mobileNumber: null,
+          dob: null,
+          gender: null,
+          postalCode: null,
+          address: null,
+          floor: null,
+          unitNumber: null,
+          password: hashedPassword,
+        };
+        const response = await authApi.post(`/user`, updatedForm);
         console.log('New user:', response.data);
 
         /* TODO:
