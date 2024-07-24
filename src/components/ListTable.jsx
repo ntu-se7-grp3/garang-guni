@@ -34,7 +34,7 @@ function ListTable({ datas, picturePaths }) {
                           className={styles.tableImg}
                       />
                       { 
-                        i < picturePaths[data[0]].REJECTED.length &&
+                        i < picturePaths[data[0]].ACCEPTED.length &&
                         <div id="blank" className={styles.tableImg}></div>
                       }
                     </>
