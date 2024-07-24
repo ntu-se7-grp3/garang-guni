@@ -23,7 +23,6 @@ function Contact() {
 
   return (
     <div className={`${styles.containerCol} ${isDark && styles.dark}`}>
-      <h1>Contact Us</h1>
       <div className={styles.contactUsBanner}>
         <img
           className={styles.contactUsBannerContent}

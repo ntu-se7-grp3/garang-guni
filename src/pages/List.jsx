@@ -139,7 +139,7 @@ function List() {
   };
  
   return (
-    <>
+    <div className={styles.list}>
       <div className={styles.banner}>
         <div className={styles.bannerContent}>
           <img src={recycleLogo} alt="Recycle Icon"/>
@@ -167,7 +167,7 @@ function List() {
           help support their efforts to protect and preserve the environment for future generations.
         </p>
       </div>
-    </>
+    </div>
   );
 }
 
