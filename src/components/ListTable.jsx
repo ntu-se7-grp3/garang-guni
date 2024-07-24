@@ -1,6 +1,8 @@
 import styles from "./ListTable.module.css"
 
-function ListTable({ datas, picturePaths }) {
+function ListTable({ buyableItemsWithPrice, datas, picturePaths }) {
+  const buyableItems = buyableItemsWithPrice.map((buyingItems) => buyingItems[0]);
+
   return (
     <table className={styles.table}>
       <thead>
@@ -16,10 +18,19 @@ function ListTable({ datas, picturePaths }) {
             <td>
               <div>
                 {data[1].map((item) => (
-                  <p className={styles.objectItems} 
-                     key={item}>
-                      {item}
-                  </p>
+                  <div key={item} className={styles.objectName}>
+                    <input type="checkbox"
+                           checked={buyableItems.includes(item)}
+                           disabled={true}
+                    />
+                    <p className={styles.objectItems} >
+                        {`${item} ${buyableItemsWithPrice.find(([first]) =>
+                          first === item) ? 
+                         `$${buyableItemsWithPrice.find(([first]) =>
+                             first === item)[1]}/kg`:
+                         ""}`}
+                    </p>
+                  </div>
                 ))}
               </div>
             </td>
