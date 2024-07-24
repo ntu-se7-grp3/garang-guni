@@ -1,7 +1,6 @@
 import { useState, useContext, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-import { AuthContext } from "../context/AuthContext";
 import SideBar from "./SideBar";
 import UserPanel from "./UserPanel";
 import styles from "./Header.module.css";
@@ -10,11 +9,12 @@ import sidebar_logo from "../assets/sidebar.png";
 import profile_logo from "../assets/profile.png";
 import sideBarStyles from "./SideBar.module.css";
 import userPanelStyles from "./UserPanel.module.css";
+import { UserContext } from "../context/user-context";
 
 function Header() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isUserPanelOpen, setIsUserPanelOpen] = useState(false);
-  const { user } = useContext(AuthContext);
+  const { isLoggedIn } = useContext(UserContext);
   // const navigate = useNavigate();
 
   const handleMouseEnter = () => {
@@ -26,7 +26,7 @@ function Header() {
   };
 
   const handleUserIconClick = () => {
-    if (user) {
+    if (isLoggedIn) {
       setIsUserPanelOpen((prevState) => !prevState);
     } else {
       // navigate("/login");
@@ -59,20 +59,10 @@ function Header() {
     <>
       <div className={styles.header}>
         <div className={styles.header_top}>
-          <img
-            src={page_logo}
-            alt="garang-guni logo"
-            className={styles.page_logo}
-          />
-          <h1 className={styles.header_title}>
-            GARANG GUNI - Earn Money While Recycling
-          </h1>
+          <img src={page_logo} alt="garang-guni logo" className={styles.page_logo} />
+          <h1 className={styles.header_title}>GARANG GUNI - Earn Money While Recycling</h1>
           <div onClick={handleUserIconClick}>
-            <img
-              src={profile_logo}
-              alt="user icon"
-              className={styles.user_icon}
-            />
+            <img src={profile_logo} alt="user icon" className={styles.user_icon} />
           </div>
         </div>
         <div className={styles.header_bottom}>
@@ -83,19 +73,11 @@ function Header() {
             onClick={() => setIsSideBarOpen((prevState) => !prevState)}
           />
           <div className={styles.username}>
-            {user ? (
-              `Hello, ${user.username}`
-            ) : (
-              <NavLink to="/login">Login/Register</NavLink>
-            )}
+            {isLoggedIn ? `Hello, ${isLoggedIn.username}` : <NavLink to="/login">Login/Register</NavLink>}
           </div>
         </div>
       </div>
-      <div
-        className={styles.sideBarHoverArea}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      />
+      <div className={styles.sideBarHoverArea} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
       <SideBar isOpen={isSideBarOpen} />
       <UserPanel isOpen={isUserPanelOpen} />
     </>
