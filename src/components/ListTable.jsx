@@ -33,7 +33,10 @@ function ListTable({ datas, picturePaths }) {
                           alt={`${data[0]} accepted logo`} 
                           className={styles.tableImg}
                       />
-                      <div id="blank" className={styles.tableImg}></div>
+                      { 
+                        i < picturePaths[data[0]].REJECTED.length &&
+                        <div id="blank" className={styles.tableImg}></div>
+                      }
                     </>
                   );})}
               </div>
@@ -48,7 +51,10 @@ function ListTable({ datas, picturePaths }) {
                           alt={`${data[0]} rejected logo`} 
                           className={styles.tableImg}
                       />
-                      <div id="blank" className={styles.tableImg}></div>
+                      { 
+                        i < picturePaths[data[0]].REJECTED.length &&
+                        <div id="blank" className={styles.tableImg}></div>
+                      }
                     </>
                   );})}
               </div>
