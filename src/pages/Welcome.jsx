@@ -74,7 +74,7 @@ function Welcome() {
           <p>Our platform is easy!</p>
           <p>
             Create your{" "}
-            <NavLink to="/register" className={styles.link}>
+            <NavLink to="/auth" className={styles.link}>
               Account
             </NavLink>
             , view the station{" "}
