@@ -9,7 +9,6 @@ function RootLayout() {
       <div style={{ marginTop: "150px" }}>
         <Outlet />
       </div>
-
       <Footer />
     </>
   );
