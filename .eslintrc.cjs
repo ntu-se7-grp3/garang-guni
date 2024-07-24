@@ -16,5 +16,6 @@ module.exports = {
     "react/prop-types": "off", // warn, off, on
     "no-unused-vars": "warn", // warn, off, on
     "react-refresh/only-export-components": ["warn", { allowConstantExport: true }],
+    "react/no-unescaped-entities": "off", // Add this line to ignore the rule
   },
 };

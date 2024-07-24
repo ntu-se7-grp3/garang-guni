@@ -1,18 +1,18 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import RootLayout from './layouts/RootLayout';
-import Welcome from './pages/Welcome';
-import Faq from './pages/Faq';
-import Contact from './pages/Contact';
-import Follow from './pages/Follow';
-import Jobs from './pages/Jobs';
-import TermsAndCondition from './pages/TermsAndCondition';
-import Auth from './pages/Auth/Auth';
-import BookNow from './pages/BookNow';
-import List from './pages/List';
-import Schedule from './pages/Schedule';
+import RootLayout from "./layouts/RootLayout";
+import Welcome from "./pages/Welcome";
+import Faq from "./pages/Faq";
+import Contact from "./pages/Contact";
+import Follow from "./pages/Follow";
+import Jobs from "./pages/Jobs";
+import TermsAndCondition from "./pages/TermsAndCondition";
+import Auth from "./pages/Auth/Auth";
+import BookNow from "./pages/BookNow";
+import List from "./pages/List";
+import Schedule from "./pages/Schedule";
 
-import { UserContextProvider } from './context/user-context';
+import { UserContextProvider } from "./context/user-context";
 
 function App() {
   return (
