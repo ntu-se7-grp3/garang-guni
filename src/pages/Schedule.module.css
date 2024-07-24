@@ -1,0 +1,59 @@
+.scheduleContainer {
+    width: 100%;
+    text-align: center;
+    background-color: lightblue;
+    color: black;
+    font-size: 25px;
+}
+
+.intro {
+    margin: 20px 0;
+}
+
+.zoneCheck {
+    display: flex;
+    gap:20px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.inputBox {
+    font-size: 20px;
+    padding: 5px;
+    background-color: rgb(70, 66, 64);
+}
+
+.zone {
+    font-size: 25px;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.invalidZone {
+    font-size: 25px;
+    font-weight: bold;
+    color: red;
+}
+.postalCode {
+    font-size: 25px;
+    font-weight: bold;
+    color: darkblue;
+}
+
+.stationPhoto {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.button {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 208, 0);
+    border: 2px black solid;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
