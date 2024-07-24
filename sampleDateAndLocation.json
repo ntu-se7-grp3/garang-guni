@@ -1,0 +1,97 @@
+[
+  {
+    "dateWithLocation": {
+      "1721491200": {
+        "locations": [
+          {
+            "name": "Bukit Merah Town Center",
+            "location": {
+              "latitude": 1.283247238156231,
+              "longitude": 103.8177632244028
+            }
+          },
+          {
+            "name": "Compass One",
+            "location": {
+              "latitude": 1.3920777514396903,
+              "longitude": 103.8950325715862
+            }
+          }
+        ]
+      },
+      "1721577600": {
+        "locations": [
+          {
+            "name": "Bukit Merah Town Center",
+            "location": {
+              "latitude": 1.283247238156231,
+              "longitude": 103.8177632244028
+            }
+          },
+          {
+            "name": "Compass One",
+            "location": {
+              "latitude": 1.3920777514396903,
+              "longitude": 103.8950325715862
+            }
+          }
+        ]
+      },
+      "1721664000": {
+        "locations": [
+          {
+            "name": "Bukit Merah Town Center",
+            "location": {
+              "latitude": 1.283247238156231,
+              "longitude": 103.8177632244028
+            }
+          },
+          {
+            "name": "Compass One",
+            "location": {
+              "latitude": 1.3920777514396903,
+              "longitude": 103.8950325715862
+            }
+          }
+        ]
+      },
+      "1721750400": {
+        "locations": [
+          {
+            "name": "Bukit Merah Town Center",
+            "location": {
+              "latitude": 1.283247238156231,
+              "longitude": 103.8177632244028
+            }
+          },
+          {
+            "name": "Compass One",
+            "location": {
+              "latitude": 1.3920777514396903,
+              "longitude": 103.8950325715862
+            }
+          }
+        ]
+      },
+      "1721836800": {
+        "locations": [
+          {
+            "name": "Bukit Merah Town Center",
+            "location": {
+              "latitude": 1.283247238156231,
+              "longitude": 103.8177632244028
+            }
+          },
+          {
+            "name": "Compass One",
+            "location": {
+              "latitude": 1.3920777514396903,
+              "longitude": 103.8950325715862
+            }
+          }
+        ]
+      }
+    },
+    "id": "1"
+  }
+]
