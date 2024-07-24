@@ -111,12 +111,17 @@
 }
 
 .datePickerWrapper input {
-  height: 25px; 
+  height: 40px; 
   padding-left: 30px;
   font-size: 16px;
 }
 
 .bookNowButton {
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-weight: 500;
+  font-family: inherit;
+  transition: border-color 0.25s;
   background-color:rgba(96, 22, 187, 1);
   color: white;
   border-radius: 100px;

@@ -5,7 +5,7 @@
 }
 
 .banner {
-  margin-top: 7%;
+  margin-top: 6%;
   margin-bottom: 4%;
   display: flex;
   height: 80px;
@@ -73,13 +73,13 @@
 }
 
 .datePickerWrapper input {
-  height: 25px; 
+  height: 40px; 
   padding-left: 30px;
   font-size: 16px;
 }
 
 .formControlLabel {
-  font-size: 0.8rem;
+  font-size: 00.8rem;
 }
 
 .contactTextField input{

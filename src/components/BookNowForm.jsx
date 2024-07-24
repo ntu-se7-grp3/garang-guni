@@ -4,7 +4,6 @@ import { useDropzone } from 'react-dropzone'
 import Joi from "joi-browser";
 import { 
     createTheme,
-    ThemeProvider,
     FormControl,
     Select,
     MenuItem,
@@ -56,12 +55,6 @@ const FORM_QUESTION_DATA = [
     option2Text: "Credit Card / Visa / Master / Paynow / Paylah"
   }
 ];
-
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark'
-  },
-});
 
 const schema = {
   description: Joi.string().min(3),
