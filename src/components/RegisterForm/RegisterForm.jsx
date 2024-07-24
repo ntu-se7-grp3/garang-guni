@@ -347,6 +347,7 @@ export default function RegisterForm({ onLoad }) {
             helperText={error.firstName}
             FormHelperTextProps={{ className: styles.helperText }}
             fullWidth
+            required
           />
         </Grid>
 
@@ -372,6 +373,7 @@ export default function RegisterForm({ onLoad }) {
             helperText={error.lastName}
             FormHelperTextProps={{ className: styles.helperText }}
             fullWidth
+            required
           />
         </Grid>
       </Grid>
@@ -396,8 +398,9 @@ export default function RegisterForm({ onLoad }) {
         helperText={error.email}
         FormHelperTextProps={{ className: styles.helperText }}
         fullWidth
+        required
       />
-      <FormControl variant="filled" margin="dense" size="small" fullWidth>
+      <FormControl variant="filled" margin="dense" size="small" fullWidth required>
         <InputLabel htmlFor="password">Password</InputLabel>
         <FilledInput
           id="password"
@@ -429,7 +432,7 @@ export default function RegisterForm({ onLoad }) {
           {error.password}
         </FormHelperText>
       </FormControl>
-      <FormControl variant="filled" margin="dense" size="small" fullWidth>
+      <FormControl variant="filled" margin="dense" size="small" fullWidth required>
         <InputLabel htmlFor="confirmPassword">Confirm Password</InputLabel>
         <FilledInput
           id="confirmPassword"

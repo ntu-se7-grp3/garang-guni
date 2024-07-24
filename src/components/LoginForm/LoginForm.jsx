@@ -208,9 +208,10 @@ export default function LoginForm({ onLoad }) {
         error={!!error.email}
         helperText={error.email}
         fullWidth
+        required
       />
 
-      <FormControl variant="filled" margin="normal" size="small" fullWidth>
+      <FormControl variant="filled" margin="normal" size="small" fullWidth required>
         <InputLabel htmlFor="password">Password</InputLabel>
         <FilledInput
           id="password"
