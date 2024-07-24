@@ -1,0 +1,52 @@
+.userPanel {
+    display: none;
+    position: fixed;
+    top: 150px;
+    right: 0px;
+    height: fit-content;
+    width: fit-content;
+    background-color: white;
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
+    transform: translateY(-100%);
+    transition-property: display transform;
+    transition-duration: 0.3s;
+    transition-behavior: allow-discrete;
+    transition-timing-function: ease-in-out;
+    z-index: 999;
+}
+
+.userPanelOpen {
+    display: flex;
+    transform: translateY(0);
+    /* This states where it starts so that you can move */
+    @starting-style {
+      transform: translateY(-100%);
+    }
+}
+
+.panelContent {
+    padding: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    font-size: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.userBar_icon {
+    width:40px;
+    margin-bottom:0px;
+  }
+
+hr {
+width: 70%;
+height: 1px;
+margin: 30px 0;
+background: grey;
+align-self: center;
+}
+
+.panelContent :hover {
+    color: blueviolet;
+}
