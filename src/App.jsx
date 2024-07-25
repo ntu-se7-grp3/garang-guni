@@ -6,13 +6,13 @@ import Faq from "./pages/Faq";
 import Contact from "./pages/Contact";
 import Follow from "./pages/Follow";
 import Jobs from "./pages/Jobs";
-import TermsAndCondition from "./pages/TermsAndCondition";
 import Auth from "./pages/Auth/Auth";
 import BookNow from "./pages/BookNow";
 import List from "./pages/List";
 import Schedule from "./pages/Schedule";
 
 import { UserContextProvider } from "./context/user-context";
+import TermsAndPrivacy from "./pages/TermsAndPrivacy";
 
 function App() {
   return (
@@ -29,7 +29,7 @@ function App() {
             <Route path="jobs" element={<Jobs />} />
             <Route path="list" element={<List />} />
             <Route path="schedule" element={<Schedule />} />
-            <Route path="terms-and-condition" element={<TermsAndCondition />} />
+            <Route path="terms-and-privacy" element={<TermsAndPrivacy />} />
           </Route>
         </Routes>
       </BrowserRouter>
