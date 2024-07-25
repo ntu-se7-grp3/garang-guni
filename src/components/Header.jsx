@@ -14,7 +14,7 @@ import { UserContext } from "../context/user-context";
 function Header() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
   const [isUserPanelOpen, setIsUserPanelOpen] = useState(false);
-  const { isLoggedIn } = useContext(UserContext);
+  const { isLoggedIn, credentials } = useContext(UserContext);
   // const navigate = useNavigate();
 
   const handleMouseEnter = () => {
@@ -73,7 +73,7 @@ function Header() {
             onClick={() => setIsSideBarOpen((prevState) => !prevState)}
           />
           <div className={styles.username}>
-            {isLoggedIn ? `Hello, ${isLoggedIn.username}` : <NavLink to="/auth">Login/Register</NavLink>}
+            {isLoggedIn ? `Hello, ${credentials[0].firstName} ${credentials[0].lastName}` : <NavLink to="/auth">Login/Register</NavLink>}
           </div>
         </div>
       </div>
