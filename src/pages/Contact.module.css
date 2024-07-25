@@ -1,5 +1,6 @@
 .containerCol {
   background-color: white;
+  height:calc(100vh - 200px);
   display: flex;
   flex-direction: column;
 }
