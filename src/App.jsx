@@ -13,6 +13,7 @@ import Schedule from "./pages/Schedule";
 
 import { UserContextProvider } from "./context/user-context";
 import TermsAndPrivacy from "./pages/TermsAndPrivacy";
+import PageNotFound from "./pages/PageNotFound";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="list" element={<List />} />
             <Route path="schedule" element={<Schedule />} />
             <Route path="terms-and-privacy" element={<TermsAndPrivacy />} />
+            <Route path="*" element={<PageNotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
