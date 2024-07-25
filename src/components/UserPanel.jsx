@@ -30,7 +30,7 @@ function UserPanel({ isOpen }) {
         </NavLink>
         <br />
 
-        <button onClick={handleLogout}>Log Out</button>
+        <button className={styles.button} onClick={handleLogout}>Log Out</button>
       </div>
     </div>
   );

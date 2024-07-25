@@ -1,3 +1,9 @@
+.contentContainer {
+  height: calc(100vh - 200px);
+  display: flex;
+  justify-content: center;
+}
+
 .loginOverlayBtn,
 .registerOverlayBtn {
   border-radius: 20px;
