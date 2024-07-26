@@ -23,7 +23,7 @@
   font-size: 3em;
   color: #333;
   white-space: nowrap;
-  overflow:hiddem;
+  overflow:hidden;
   text-overflow: ellipsis;
   text-align: center;
 }
@@ -52,6 +52,15 @@
   font-size: 1.5em;
   color: #333;
   white-space:nowrap;
+}
+
+.sideBarHoverArea {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50px;
+  z-index: 999;
 }
 
 @media (max-width: 768px) {
