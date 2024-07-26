@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 import SideBar from "./SideBar";
 import UserPanel from "./UserPanel";
@@ -13,9 +13,8 @@ import { UserContext } from "../context/user-context";
 
 function Header() {
   const [isSideBarOpen, setIsSideBarOpen] = useState(false);
-  const [isUserPanelOpen, setIsUserPanelOpen] = useState(false);
-  const { isLoggedIn, credentials } = useContext(UserContext);
-  // const navigate = useNavigate();
+  const { isLoggedIn, credentials, isUserPanelOpen, setIsUserPanelOpen } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const handleMouseEnter = () => {
     setIsSideBarOpen(true);
@@ -29,8 +28,7 @@ function Header() {
     if (isLoggedIn) {
       setIsUserPanelOpen((prevState) => !prevState);
     } else {
-      // navigate("/login");
-      setIsUserPanelOpen((prevState) => !prevState);
+      navigate("/auth");
     }
   };
 
@@ -73,12 +71,17 @@ function Header() {
             onClick={() => setIsSideBarOpen((prevState) => !prevState)}
           />
           <div className={styles.username}>
-            {isLoggedIn ? `Hello, ${credentials[0].firstName} ${credentials[0].lastName}` : <NavLink to="/auth">Login/Register</NavLink>}
+            {isLoggedIn ? (
+              `Hello, ${credentials[0].firstName} ${credentials[0].lastName}`
+            ) : (
+              <NavLink to="/auth">Login/Register</NavLink>
+            )}
           </div>
         </div>
       </div>
-      <div className={styles.sideBarHoverArea} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
-      <SideBar isOpen={isSideBarOpen} />
+      <div className={styles.sideBarHoverArea} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+        <SideBar isOpen={isSideBarOpen} />
+      </div>
       <UserPanel isOpen={isUserPanelOpen} />
     </>
   );
