@@ -19,74 +19,81 @@
           }
         ]
       },
-      "1721577600": {
+      "1722009600": {
         "locations": [
           {
-            "name": "Bukit Merah Town Center",
+            "name": "Block 205 HDB Pasir Ris",
             "location": {
-              "latitude": 1.283247238156231,
-              "longitude": 103.8177632244028
+              "latitude": 1.3671202548056118,
+              "longitude": 103.96301186067016
             }
           },
           {
-            "name": "Compass One",
+            "name": "Toa Payoh MRT Station ",
             "location": {
-              "latitude": 1.3920777514396903,
-              "longitude": 103.8950325715862
+              "latitude": 1.332890937539911,
+              "longitude": 103.84738415512373
             }
           }
         ]
       },
-      "1721664000": {
+      "1722441600": {
         "locations": [
           {
-            "name": "Bukit Merah Town Center",
+            "name": "IMM",
             "location": {
-              "latitude": 1.283247238156231,
-              "longitude": 103.8177632244028
+              "latitude": 1.3361399878008016,
+              "longitude": 103.74700671630383
             }
           },
           {
-            "name": "Compass One",
+            "name": "Kebun Community Club",
             "location": {
-              "latitude": 1.3920777514396903,
-              "longitude": 103.8950325715862
+              "latitude": 1.3730815944446377,
+              "longitude": 103.8375860299283
             }
           }
         ]
       },
-      "1721750400": {
+      "1723132800": {
         "locations": [
           {
-            "name": "Bukit Merah Town Center",
+            "name": "Block 302A HDB Anchorvale",
             "location": {
-              "latitude": 1.283247238156231,
-              "longitude": 103.8177632244028
+              "latitude": 1.3879469870664671,
+              "longitude": 103.89102450093631
             }
           },
           {
-            "name": "Compass One",
+            "name": "Block 110 HDB Woodlands",
             "location": {
-              "latitude": 1.3920777514396903,
-              "longitude": 103.8950325715862
+              "latitude": 1.4377182526903334,
+              "longitude": 103.78154068424527
+            }
+          },
+          {
+            "name": "Suntec Singapore Convention & Exhibition Centre",
+            "location": {
+              "latitude": 1.2937947372178797,
+              "longitude": 103.85725756655714
             }
           }
         ]
       },
-      "1721836800": {
+      "1724083200": {
         "locations": [
           {
-            "name": "Bukit Merah Town Center",
+            "name": "FoodXchange @ Admiralty",
             "location": {
-              "latitude": 1.283247238156231,
-              "longitude": 103.8177632244028
+              "latitude": 1.4631440489045904,
+              "longitude": 103.8143626916126
             }
           },
           {
-            "name": "Compass One",
+            "name": "Chong Pang Market & Food Centre",
             "location": {
-              "latitude": 1.3920777514396903,
-              "longitude": 103.8950325715862
+              "latitude": 1.4319585609763947,
+              "longitude": 103.82804115736757
             }
           }
         ]
