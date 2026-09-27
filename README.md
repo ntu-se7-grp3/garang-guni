@@ -1,8 +1,6 @@
 <a id="readme-top"></a>
-<!-- PROJECT SHIELDS -->
 
 <!-- PROJECT LOGO -->
-<!-- <br /> -->
 <div align="center">
   <a href="https://github.com/ntu-se7-grp3/garang-guni">
     <img src="src/assets/logo.png" alt="Logo" width="160" height="160">
@@ -11,7 +9,7 @@
   <h3 align="center">The Garang Guni</h3>
 
   <p align="center">
-    A small project done to assist Karang Guni and its customers
+    Bridging traditional recycling services with modern convenience to cut down paper waste.
     <br />
     <a href="https://github.com/ntu-se7-grp3/garang-guni"><strong>Explore the docs »</strong></a>
     <br />
@@ -43,9 +41,18 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis risus ac lorem tempor rutrum. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi rhoncus, velit in ullamcorper iaculis, diam nisl placerat sapien, sit amet malesuada lacus lacus ut elit. Donec tellus urna, euismod et fringilla tempor, tristique ut erat. Integer nec maximus nibh. Mauris congue tincidunt tellus dignissim rutrum. Nullam et ligula quis enim tincidunt auctor. Pellentesque id ultricies ex.
+[![Product-Screenshot](src/assets/logo.png)](https://github.com/ntu-se7-grp3/garang-guni)
 
-Nulla id lorem ante. Praesent quam nulla, accumsan id dolor vitae, sagittis dapibus enim. Suspendisse sit amet arcu nec urna dictum egestas. Mauris non commodo felis. Phasellus pulvinar nibh porttitor feugiat blandit. Pellentesque ipsum metus, viverra quis dapibus eget, volutpat at eros. Fusce venenatis ultricies magna. Suspendisse consectetur lacinia orci, a lacinia ante gravida vitae. Integer vehicula, erat ac ullamcorper blandit, odio diam congue dolor, ut cursus sapien tortor in arcu. Donec feugiat malesuada efficitur. Integer at commodo ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc non nibh tristique, vehicula quam non, ultricies lectus. Pellentesque eget massa sit amet enim condimentum hendrerit.
+Every morning, many households are greeted by physical paper flyers slipped under their doors detailing weekly Karang Guni (rag-and-bone man) collection schedules. While helpful, this repetitive cycle generates immense paper waste week after week. 
+
+**The Garang Guni** was conceptualized to solve this exact problem. By moving schedules and coordination to a digital platform, we aim to:
+* **Reduce Environmental Waste:** Transition from weekly physical flyers to semi-annual digital distributions, drastically cutting down neighborhood paper clutter.
+* **Empower Communities & Collectors:** Provide a centralized app that benefits both customers and traditional collectors through seamless coordination.
+
+### Key Features
+* **Schedule Viewer:** Easily check upcoming collection dates and times without keeping track of paper flyers.
+* **Deal Booking:** Schedule pick-ups or list recyclable items ahead of time.
+* **Interactive Map:** Locate the nearest collection points or track live collection routes in your neighborhood.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -58,11 +65,12 @@ Nulla id lorem ante. Praesent quam nulla, accumsan id dolor vitae, sagittis dapi
 
 ### Prerequisites
 
-Please check if you have installed the following
+Please check if you have installed the following:
 
 * <strong>npm</strong>
   ```sh
   npm -v
+  
   ```
   If npm is not installed, install via `nvm` command.
   <br>
@@ -93,9 +101,9 @@ Please check if you have installed the following
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Nulla id lorem ante. Praesent quam nulla, accumsan id dolor vitae, sagittis dapibus enim. Suspendisse sit amet arcu nec urna dictum egestas. Mauris non commodo felis. Phasellus pulvinar nibh porttitor feugiat blandit. Pellentesque ipsum metus, viverra quis dapibus eget, volutpat at eros. Fusce venenatis ultricies magna. Suspendisse consectetur lacinia orci, a lacinia ante gravida vitae. Integer vehicula, erat ac ullamcorper blandit, odio diam congue dolor, ut cursus sapien tortor in arcu. Donec feugiat malesuada efficitur. Integer at commodo ligula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nunc non nibh tristique, vehicula quam non, ultricies lectus. Pellentesque eget massa sit amet enim condimentum hendrerit.
+Users can open the application to view real-time collection schedules, book a recycling deal with local collectors, or pull up an integrated map to find the nearest drop-off points. Instead of relying on weekly physical reminders, households only need a digital update once every half-year—saving trees while keeping recycling efforts organized.
 
-_For more examples, please refer to the [Documentation](https://google.com)_
+For more examples, please refer to the Documentation
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
